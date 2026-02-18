@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get a Free Cleaning Quote — CleanNova</title>
+<meta name="description" content="Get a free, no-obligation cleaning quote in minutes. Residential and commercial cleaning services tailored to your space. Serving homes and businesses since 2020.">
+<meta name="keywords" content="cleaning quote, house cleaning estimate, commercial cleaning quote, cleaning service near me, residential cleaning, office cleaning">
+<link rel="canonical" href="https://cleannova.com/get-quote">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Get a Free Cleaning Quote — CleanNova">
+<meta property="og:description" content="Premium residential and commercial cleaning. Get your free quote in minutes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cleannova.com/get-quote">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Get a Free Cleaning Quote — CleanNova">
+<meta name="twitter:description" content="Premium residential and commercial cleaning. Get your free quote in minutes.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "CleanNova Cleaning Services",
+  "description": "Premium residential and commercial cleaning services.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "CleanNova",
+    "priceRange": "$120-$350",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "2400"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Your City"
+  },
+  "serviceType": ["Residential Cleaning", "Commercial Cleaning", "Deep Cleaning", "Move-Out Cleaning"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FDF6EC;
+    --warm-white: #FEFCF8;
+    --sage: #8BAF8E;
+    --sage-deep: #5F8A62;
+    --sage-light: #D4E5D5;
+    --peach: #F5C5A3;
+    --peach-soft: #FDE8D5;
+    --charcoal: #2C2C2C;
+    --text: #3A3A3A;
+    --text-light: #7A7A7A;
+    --text-lighter: #A8A8A8;
+    --border: #E8E2D8;
+    --shadow-soft: 0 4px 24px rgba(0,0,0,0.04);
+    --shadow-medium: 0 8px 40px rgba(0,0,0,0.06);
+    --shadow-lift: 0 16px 48px rgba(0,0,0,0.08);
+    --radius: 20px;
+    --radius-sm: 12px;
+    --radius-pill: 100px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3 { font-family: 'DM Serif Display', serif; font-weight: 400; }
+
+  /* =================== NAV =================== */
+  nav {
+    padding: 20px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: var(--cream);
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--charcoal);
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    color: white;
+  }
+
+  .nav-right {
+    display: flex; align-items: center; gap: 24px;
+  }
+
+  .nav-right a {
+    text-decoration: none; color: var(--text-light);
+    font-size: 0.9rem; font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-right a:hover { color: var(--charcoal); }
+
+  .nav-phone {
+    display: flex; align-items: center; gap: 6px;
+    font-weight: 600; color: var(--charcoal) !important;
+  }
+
+  /* =================== PAGE LAYOUT =================== */
+  .quote-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* =================== LEFT: INFO =================== */
+  .quote-info {
+    position: sticky;
+    top: 40px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .quote-info .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--sage-deep);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .quote-info .section-label::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--sage);
+  }
+
+  .quote-info h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    color: var(--charcoal);
+    line-height: 1.12;
+    margin-bottom: 20px;
+  }
+
+  .quote-info h1 em {
+    font-style: italic;
+    color: var(--sage-deep);
+    position: relative;
+  }
+
+  .quote-info h1 em::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 10px;
+    background: var(--peach-soft);
+    border-radius: 4px;
+    z-index: -1;
+    transform: rotate(-1deg);
+  }
+
+  .quote-info > p {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .trust-points {
+    display: flex; flex-direction: column; gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .trust-point {
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+
+  .trust-icon {
+    width: 48px; height: 48px;
+    background: var(--sage-light);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .trust-point h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+
+  .trust-point p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  .testimonial-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  .testimonial-stars {
+    color: #F5B731;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-card blockquote {
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .testimonial-author {
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .testimonial-avatar {
+    width: 40px; height: 40px;
+    background: linear-gradient(135deg, var(--sage-light), var(--peach-soft));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--sage-deep);
+  }
+
+  .testimonial-author-text strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--charcoal);
+  }
+
+  .testimonial-author-text span {
+    font-size: 0.78rem;
+    color: var(--text-lighter);
+  }
+
+  /* =================== RIGHT: FORM =================== */
+  .quote-form-wrapper {
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .quote-form-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 44px;
+    box-shadow: var(--shadow-medium);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-form-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--sage), var(--peach));
+  }
+
+  /* Step indicator */
+  .steps-indicator {
+    display: flex; align-items: center; gap: 0;
+    margin-bottom: 36px;
+  }
+
+  .step-dot {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--text-lighter);
+    transition: all 0.3s;
+  }
+
+  .step-dot.active { color: var(--sage-deep); }
+  .step-dot.completed { color: var(--sage); }
+
+  .step-num {
+    width: 28px; height: 28px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    transition: all 0.3s;
+  }
+
+  .step-dot.active .step-num {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: white;
+  }
+
+  .step-dot.completed .step-num {
+    background: var(--sage-light);
+    border-color: var(--sage-light);
+    color: var(--sage-deep);
+  }
+
+  .step-line {
+    flex: 1; height: 2px;
+    background: var(--border);
+    margin: 0 12px;
+    transition: background 0.3s;
+  }
+
+  .step-line.active { background: var(--sage); }
+
+  /* Type selection */
+  .type-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .type-card {
+    background: var(--cream);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+  }
+
+  .type-card:hover {
+    border-color: var(--sage);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-soft);
+    background: white;
+  }
+
+  .type-card.selected {
+    border-color: var(--sage);
+    background: var(--sage-light);
+    box-shadow: 0 0 0 4px rgba(139, 175, 142, 0.15);
+  }
+
+  .type-card-icon { font-size: 2rem; margin-bottom: 12px; }
+
+  .type-card h3 {
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+
+  .type-card p {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  .type-card.selected h3 { color: var(--sage-deep); }
+
+  /* Form fields */
+  .form-step { display: none; }
+  .form-step.active { display: block; animation: stepSlide 0.4s ease both; }
+
+  @keyframes stepSlide {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .form-fields {
+    display: flex; flex-direction: column; gap: 20px;
+    margin-top: 28px;
+  }
+
+  .field-group {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+
+  .field-group label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .field-group .optional {
+    font-weight: 400;
+    color: var(--text-lighter);
+  }
+
+  .field-group input,
+  .field-group select,
+  .field-group textarea {
+    padding: 14px 18px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.92rem;
+    color: var(--charcoal);
+    background: white;
+    transition: all 0.3s ease;
+    outline: none;
+    -webkit-appearance: none;
+    width: 100%;
+  }
+
+  .field-group input:focus,
+  .field-group select:focus,
+  .field-group textarea:focus {
+    border-color: var(--sage);
+    box-shadow: 0 0 0 4px rgba(139, 175, 142, 0.12);
+  }
+
+  .field-group input::placeholder,
+  .field-group textarea::placeholder {
+    color: var(--text-lighter);
+  }
+
+  .field-group select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%237A7A7A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .field-group textarea { resize: vertical; min-height: 90px; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .field-error {
+    border-color: #E57373 !important;
+    box-shadow: 0 0 0 4px rgba(229, 115, 115, 0.1) !important;
+  }
+
+  .error-msg {
+    font-size: 0.75rem;
+    color: #E57373;
+    display: none;
+    margin-top: -4px;
+  }
+
+  /* Buttons */
+  .form-actions {
+    display: flex; gap: 12px;
+    margin-top: 28px;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 16px 32px;
+    background: var(--sage);
+    color: white;
+    border: none;
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(139, 175, 142, 0.3);
+    flex: 1;
+    justify-content: center;
+  }
+
+  .btn-primary:hover {
+    background: var(--sage-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(139, 175, 142, 0.4);
+  }
+
+  .btn-back {
+    padding: 16px 24px;
+    background: transparent;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-pill);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-back:hover {
+    border-color: var(--charcoal);
+    color: var(--charcoal);
+  }
+
+  /* Success */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 48px 20px;
+  }
+
+  .form-success.active { display: block; animation: stepSlide 0.4s ease both; }
+
+  .success-ring {
+    width: 80px; height: 80px;
+    background: var(--sage-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+
+  .success-ring span {
+    font-size: 2.2rem;
+    color: var(--sage-deep);
+    font-weight: 700;
+  }
+
+  .form-success h2 {
+    font-size: 1.8rem;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+
+  .form-success p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    max-width: 360px;
+    margin: 0 auto 28px;
+  }
+
+  .form-success .btn-primary {
+    display: inline-flex;
+    flex: unset;
+  }
+
+  /* =================== FOOTER =================== */
+  .mini-footer {
+    padding: 32px 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-lighter);
+    margin-top: 40px;
+  }
+
+  /* =================== RESPONSIVE =================== */
+  @media (max-width: 960px) {
+    .quote-page {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 40px 24px 60px;
+    }
+    .quote-info { position: static; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 16px 20px; }
+    .logo { font-size: 1.3rem; }
+    .nav-right span { display: none; }
+    .quote-form-card { padding: 28px 20px; }
+    .type-selection { grid-template-columns: 1fr; }
+    .field-row { grid-template-columns: 1fr; }
+    .steps-indicator span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG Icon Sprite -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+  <symbol id="icon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </symbol>
+  <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+  </symbol>
+  <symbol id="icon-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"/>
+  </symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </symbol>
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </symbol>
+  <symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+  </symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+  </symbol>
+  <symbol id="icon-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+  </symbol>
+  <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+  </symbol>
+  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+  </symbol>
+</svg>
+
+<!-- NAV -->
+<nav>
+  <a href="cleaning-site.html" class="logo">
+    <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#icon-logo"/></svg></div>
+    CleanNova
+  </a>
+  <div class="nav-right">
+    <a href="cleaning-site.html">← Back to Home</a>
+    <a href="tel:+15551234567" class="nav-phone"><svg width="16" height="16" viewBox="0 0 24 24" style="vertical-align:-2px;"><use href="#icon-phone"/></svg> (555) 123-4567</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="quote-page">
+
+  <!-- LEFT: Info -->
+  <div class="quote-info">
+    <div class="section-label">Free Quote</div>
+    <h1>Let's get your space <em>sparkling</em></h1>
+    <p>Fill out the form and our team will send you a personalized quote within 2 hours. No obligations, no spam — just a clear price for a cleaner space.</p>
+
+    <div class="trust-points">
+      <div class="trust-point">
+        <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-zap"/></svg></div>
+        <div>
+          <h3>Quote in under 2 hours</h3>
+          <p>We respond fast so you can book fast.</p>
+        </div>
+      </div>
+      <div class="trust-point">
+        <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-shield"/></svg></div>
+        <div>
+          <h3>Fully insured & bonded</h3>
+          <p>Your space and belongings are always protected.</p>
+        </div>
+      </div>
+      <div class="trust-point">
+        <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-leaf"/></svg></div>
+        <div>
+          <h3>Eco-friendly products</h3>
+          <p>Safe for kids, pets, and the planet.</p>
+        </div>
+      </div>
+      <div class="trust-point">
+        <div class="trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-heart"/></svg></div>
+        <div>
+          <h3>Satisfaction guarantee</h3>
+          <p>Not happy? We'll re-clean for free.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="testimonial-stars" style="display:flex;gap:2px;color:#F5B731;"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg></div>
+      <blockquote>"CleanNova transformed our office. The team is professional, thorough, and always on time. Best cleaning service we've ever used."</blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">MR</div>
+        <div class="testimonial-author-text">
+          <strong>Maria Rodriguez</strong>
+          <span>Office Manager, TechStart Inc.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Form -->
+  <div class="quote-form-wrapper">
+    <div class="quote-form-card">
+
+      <!-- Steps indicator -->
+      <div class="steps-indicator">
+        <div class="step-dot active" id="stepDot1">
+          <div class="step-num">1</div>
+          <span>Type</span>
+        </div>
+        <div class="step-line" id="stepLine1"></div>
+        <div class="step-dot" id="stepDot2">
+          <div class="step-num">2</div>
+          <span>Details</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Type -->
+      <div class="form-step active" id="formStep1">
+        <h3 style="font-size:1.3rem; color:var(--charcoal); margin-bottom:6px;">What are we cleaning?</h3>
+        <p style="font-size:0.88rem; color:var(--text-light); margin-bottom:24px;">Select your space type to get started.</p>
+
+        <div class="type-selection">
+          <button class="type-card" id="typeRes" onclick="pickType('residential')">
+            <div class="type-card-icon"><svg width="32" height="32" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-home"/></svg></div>
+            <h3>Residential</h3>
+            <p>Houses, apartments, condos, townhomes</p>
+          </button>
+          <button class="type-card" id="typeCom" onclick="pickType('commercial')">
+            <div class="type-card-icon"><svg width="32" height="32" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-building"/></svg></div>
+            <h3>Commercial</h3>
+            <p>Offices, retail, co-working, warehouses</p>
+          </button>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-primary" id="nextBtn1" onclick="goToStep2()" style="opacity:0.5; pointer-events:none;">
+            Continue →
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Details -->
+      <div class="form-step" id="formStep2">
+        <h3 style="font-size:1.3rem; color:var(--charcoal); margin-bottom:6px;">Tell us about your space</h3>
+        <p style="font-size:0.88rem; color:var(--text-light); margin-bottom:8px;">We'll use this to build your custom quote.</p>
+
+        <div class="form-fields">
+          <div class="field-group">
+            <label for="fName">Full Name</label>
+            <input type="text" id="fName" placeholder="Jane Smith" autocomplete="name" required>
+          </div>
+          <div class="field-group">
+            <label for="fEmail">Email Address</label>
+            <input type="email" id="fEmail" placeholder="jane@example.com" autocomplete="email" required>
+          </div>
+          <div class="field-group">
+            <label for="fPhone">Phone <span class="optional">(optional)</span></label>
+            <input type="tel" id="fPhone" placeholder="(555) 123-4567" autocomplete="tel">
+          </div>
+          <div class="field-group">
+            <label for="fAddress">Property Address</label>
+            <input type="text" id="fAddress" placeholder="123 Main St, City, State ZIP" autocomplete="street-address" required>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label for="fSqft">Approx. Square Feet</label>
+              <input type="number" id="fSqft" placeholder="1500" required>
+            </div>
+            <div class="field-group">
+              <label for="fFreq">Frequency</label>
+              <select id="fFreq" required>
+                <option value="">Select...</option>
+                <option>One-time</option>
+                <option>Weekly</option>
+                <option>Bi-weekly</option>
+                <option>Monthly</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="fNotes">Special Requests <span class="optional">(optional)</span></label>
+            <textarea id="fNotes" rows="3" placeholder="Pets, access instructions, areas of focus, preferred cleaning day..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-back" onclick="backToStep1()">← Back</button>
+          <button class="btn-primary" onclick="submitForm()">Get My Free Quote →</button>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-ring"><span><svg width="32" height="32" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-check"/></svg></span></div>
+        <h2>Quote request sent!</h2>
+        <p>We'll review your details and email you a custom quote within 2 hours. Keep an eye on your inbox.</p>
+        <a href="cleaning-site.html" class="btn-primary">← Back to Home</a>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="mini-footer">
+  © 2026 CleanNova. All rights reserved. Premium cleaning for homes & businesses.
+</footer>
+
+<script>
+  let selectedType = '';
+
+  function pickType(type) {
+    selectedType = type;
+    document.getElementById('typeRes').classList.toggle('selected', type === 'residential');
+    document.getElementById('typeCom').classList.toggle('selected', type === 'commercial');
+
+    const btn = document.getElementById('nextBtn1');
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+  }
+
+  function goToStep2() {
+    if (!selectedType) return;
+
+    document.getElementById('formStep1').classList.remove('active');
+    document.getElementById('formStep2').classList.add('active');
+
+    // Update step indicators
+    document.getElementById('stepDot1').classList.add('completed');
+    document.getElementById('stepDot1').classList.remove('active');
+    document.getElementById('stepLine1').classList.add('active');
+    document.getElementById('stepDot2').classList.add('active');
+  }
+
+  function backToStep1() {
+    document.getElementById('formStep2').classList.remove('active');
+    document.getElementById('formStep1').classList.add('active');
+
+    document.getElementById('stepDot1').classList.remove('completed');
+    document.getElementById('stepDot1').classList.add('active');
+    document.getElementById('stepLine1').classList.remove('active');
+    document.getElementById('stepDot2').classList.remove('active');
+  }
+
+  function submitForm() {
+    const required = ['fName', 'fEmail', 'fAddress', 'fSqft'];
+    let valid = true;
+
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.classList.add('field-error');
+        valid = false;
+      } else {
+        el.classList.remove('field-error');
+      }
+    });
+
+    const freq = document.getElementById('fFreq');
+    if (!freq.value) {
+      freq.classList.add('field-error');
+      valid = false;
+    } else {
+      freq.classList.remove('field-error');
+    }
+
+    if (!valid) return;
+
+    // Disable button while sending
+    const btn = document.querySelector('.form-actions .btn-primary');
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.style.opacity = '0.7';
+    btn.style.pointerEvents = 'none';
+
+    // =====================================================
+    // FORMSPREE: Replace YOUR_FORM_ID with your actual ID
+    // Sign up free at https://formspree.io, create a form,
+    // and paste the ID below (e.g. 'xpzvqkdl')
+    // =====================================================
+    const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+    fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: document.getElementById('fName').value.trim(),
+        email: document.getElementById('fEmail').value.trim(),
+        phone: document.getElementById('fPhone').value.trim(),
+        address: document.getElementById('fAddress').value.trim(),
+        square_feet: document.getElementById('fSqft').value.trim(),
+        frequency: freq.value,
+        notes: document.getElementById('fNotes').value.trim(),
+        service_type: selectedType || 'Not specified',
+        _subject: `New ${selectedType || ''} cleaning quote request from ${document.getElementById('fName').value.trim()}`
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById('formStep2').classList.remove('active');
+        document.getElementById('formSuccess').classList.add('active');
+        document.querySelector('.steps-indicator').style.display = 'none';
+      } else {
+        alert('Something went wrong. Please try again or call us directly.');
+        btn.textContent = originalText;
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+    })
+    .catch(() => {
+      alert('Connection error. Please check your internet and try again.');
+      btn.textContent = originalText;
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    });
+  }
+
+  // Check URL params for pre-selection
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('type') === 'residential') pickType('residential');
+  if (params.get('type') === 'commercial') pickType('commercial');
+</script>
+
+</body>
+</html>

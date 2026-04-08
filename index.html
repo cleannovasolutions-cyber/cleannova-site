@@ -55,812 +55,909 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FDF6EC;
-    --warm-white: #FEFCF8;
-    --sage: #8BAF8E;
-    --sage-deep: #5F8A62;
-    --sage-light: #D4E5D5;
-    --peach: #F5C5A3;
-    --peach-soft: #FDE8D5;
-    --charcoal: #2C2C2C;
-    --text: #3A3A3A;
-    --text-light: #7A7A7A;
-    --text-lighter: #A8A8A8;
-    --border: #E8E2D8;
-    --shadow-soft: 0 4px 24px rgba(0,0,0,0.04);
-    --shadow-medium: 0 8px 40px rgba(0,0,0,0.06);
-    --shadow-lift: 0 16px 48px rgba(0,0,0,0.08);
-    --radius: 20px;
-    --radius-sm: 12px;
-    --radius-pill: 100px;
+    --black: #1A1714;
+    --charcoal: #2C2824;
+    --dark: #3A3530;
+    --graphite: #4A4540;
+    --ivory: #FAF7F2;
+    --ivory-dim: #F0EBE3;
+    --cream: #FDFCF9;
+    --warm-bg: #F5F1EB;
+    --gold: #B8935F;
+    --gold-light: #D4BA8A;
+    --gold-dim: rgba(184, 147, 95, 0.1);
+    --text-primary: #2C2824;
+    --text-secondary: #6B6560;
+    --text-muted: #9B9590;
+    --border: rgba(44, 40, 36, 0.1);
+    --border-light: rgba(44, 40, 36, 0.06);
+    --glass: rgba(250, 247, 242, 0.9);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-lg: 24px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    background: var(--ivory);
+    color: var(--text-primary);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3 { font-family: 'DM Serif Display', serif; font-weight: 400; }
-
-  .svg-icon {
-    display: inline-block;
-    width: 1em; height: 1em;
-    vertical-align: -0.125em;
-    fill: currentColor;
-  }
-
-  .svg-icon-stroke {
-    fill: none;
-    stroke: currentColor;
-  }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
 
   /* =================== NAV =================== */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 20px 40px;
+    padding: 24px 48px;
     display: flex; align-items: center; justify-content: space-between;
-    background: rgba(253, 246, 236, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(232, 226, 216, 0.5);
-    transition: all 0.4s ease;
+    background: transparent;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   nav.scrolled {
-    padding: 14px 40px;
+    padding: 16px 48px;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
     box-shadow: 0 2px 20px rgba(0,0,0,0.04);
   }
 
   .logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    color: var(--charcoal);
-    display: flex; align-items: center; gap: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: white;
+    display: flex; align-items: center; gap: 12px;
     text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.4s;
   }
 
-  .logo-icon {
-    width: 36px; height: 36px;
-    background: var(--sage);
+  nav.scrolled .logo { color: var(--charcoal); }
+
+  .logo-mark {
+    width: 38px; height: 38px;
+    border: 1.5px solid var(--gold-light);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    color: white;
-    animation: sparkleRotate 6s ease-in-out infinite;
+    transition: all 0.4s ease;
   }
 
-  @keyframes sparkleRotate {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(10deg) scale(1.05); }
+  nav.scrolled .logo-mark { border-color: var(--gold); }
+
+  .logo:hover .logo-mark {
+    background: var(--gold);
+    border-color: var(--gold);
   }
+
+  .logo:hover .logo-mark svg { color: white; }
 
   .nav-links {
-    display: flex; align-items: center; gap: 36px;
+    display: flex; align-items: center; gap: 40px;
     list-style: none;
   }
 
   .nav-links a {
     text-decoration: none;
-    color: var(--text-light);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.3s;
-    position: relative;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.4s;
   }
 
-  .nav-links a::after {
-    content: '';
-    position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 2px;
-    background: var(--sage);
-    border-radius: 2px;
-    transition: width 0.3s ease;
+  .nav-links a:hover { color: white; }
+
+  nav.scrolled .nav-links a { color: var(--text-secondary); }
+  nav.scrolled .nav-links a:hover { color: var(--charcoal); }
+
+  .nav-email {
+    font-weight: 500 !important;
+    color: var(--gold-light) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-size: 0.88rem !important;
   }
 
-  .nav-links a:hover { color: var(--charcoal); }
-  .nav-links a:hover::after { width: 100%; }
+  nav.scrolled .nav-email { color: var(--gold) !important; }
 
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 30px;
-    background: var(--sage);
-    color: white;
+  .btn-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: var(--gold);
+    color: var(--black);
     border: none;
-    border-radius: var(--radius-pill);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
+    border-radius: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
     font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 16px rgba(139, 175, 142, 0.3);
-  }
-
-  .btn-primary:hover {
-    background: var(--sage-deep);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(139, 175, 142, 0.4);
-  }
-
-  .btn-secondary {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 30px;
-    background: transparent;
-    color: var(--charcoal);
-    border: 2px solid var(--border);
-    border-radius: var(--radius-pill);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--sage);
-    color: var(--sage-deep);
-    transform: translateY(-2px);
-  }
-
-  /* =================== HERO =================== */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 140px 60px 80px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
   }
 
-  .hero-bg-shapes {
+  .btn-cta::before {
+    content: '';
     position: absolute; inset: 0;
-    pointer-events: none;
-    z-index: 0;
+    background: var(--ivory);
+    transform: translateY(101%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .hero-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
+  .btn-cta:hover::before { transform: translateY(0); }
+  .btn-cta span { position: relative; z-index: 1; }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.4s ease;
   }
 
-  .hero-blob-1 {
-    width: 500px; height: 500px;
-    background: var(--sage-light);
-    top: -100px; right: -100px;
-    animation: blobFloat 12s ease-in-out infinite;
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
   }
 
-  .hero-blob-2 {
-    width: 400px; height: 400px;
-    background: var(--peach-soft);
-    bottom: -50px; left: 10%;
-    animation: blobFloat 10s ease-in-out infinite reverse;
+  /* =================== HERO =================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
   }
 
-  .hero-blob-3 {
-    width: 250px; height: 250px;
-    background: var(--sage-light);
-    top: 40%; left: 50%;
-    animation: blobFloat 8s ease-in-out infinite 2s;
+  .hero-image {
+    position: absolute; inset: 0;
+    background: url('the-best-team-to-keep-your-office-clean-portrait-of-two-young-woman-cleaning-a-modern-office--e1695676262935.webp') center top/cover no-repeat;
   }
 
-  @keyframes blobFloat {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(20px, -30px) scale(1.05); }
-    66% { transform: translate(-15px, 20px) scale(0.95); }
+  .hero-image::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(26,23,20,0.25) 0%, rgba(26,23,20,0.05) 30%, rgba(26,23,20,0.4) 65%, rgba(26,23,20,0.92) 100%),
+      linear-gradient(90deg, rgba(26,23,20,0.55) 0%, transparent 50%);
   }
 
   .hero-content {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
     width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: end;
   }
 
-  .hero-left { animation: fadeUp 1s ease 0.2s both; }
+  .hero-left { }
 
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 18px;
-    background: var(--peach-soft);
-    border-radius: var(--radius-pill);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #C4844E;
-    margin-bottom: 28px;
+  .hero-overline {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.3s forwards;
   }
 
-  .hero-badge span { animation: pulse 2s ease infinite; }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+  .hero-overline::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
   }
 
   .hero h1 {
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
-    line-height: 1.1;
-    color: var(--charcoal);
-    margin-bottom: 24px;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--ivory);
+    margin-bottom: 32px;
+    opacity: 0; transform: translateY(30px);
+    animation: fadeUp 0.8s ease 0.5s forwards;
   }
 
   .hero h1 em {
     font-style: italic;
-    color: var(--sage-deep);
-    position: relative;
-  }
-
-  .hero h1 em::after {
-    content: '';
-    position: absolute;
-    bottom: 4px; left: 0; right: 0;
-    height: 12px;
-    background: var(--peach-soft);
-    border-radius: 4px;
-    z-index: -1;
-    transform: rotate(-1deg);
+    color: var(--gold);
   }
 
   .hero-desc {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--text-light);
-    margin-bottom: 40px;
-    max-width: 460px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.85);
+    max-width: 520px;
+    margin-bottom: 48px;
+    font-weight: 300;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.7s forwards;
   }
 
   .hero-ctas {
     display: flex; gap: 16px; align-items: center;
     flex-wrap: wrap;
-  }
-
-  .hero-stats {
-    display: flex; gap: 40px;
-    margin-top: 56px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
-  }
-
-  .hero-stat h3 {
-    font-size: 2rem;
-    color: var(--sage-deep);
-  }
-
-  .hero-stat p {
-    font-size: 0.8rem;
-    color: var(--text-lighter);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-top: 4px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.9s forwards;
   }
 
   .hero-right {
-    position: relative;
-    animation: fadeUp 1s ease 0.5s both;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s ease 1s forwards;
   }
 
-  .hero-visual {
-    width: 100%;
-    aspect-ratio: 4/5;
-    background: url('the-best-team-to-keep-your-office-clean-portrait-of-two-young-woman-cleaning-a-modern-office--e1695676262935.webp') center/cover no-repeat;
-    border-radius: 32px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-lift);
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
   }
 
-  .hero-visual::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.15) 100%);
-    border-radius: 32px;
-  }
-
-  .hero-visual-inner {
-    display: none;
-  }
-
-  .hero-visual-icon {
-    font-size: 5rem;
-    animation: gentleBounce 3s ease-in-out infinite;
-  }
-
-  @keyframes gentleBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-
-  .hero-visual-text {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
-    color: var(--sage-deep);
-    opacity: 0.7;
-  }
-
-  .floating-card {
-    position: absolute;
-    background: rgba(255,255,255,0.95);
+  .hero-stat {
+    background: rgba(250, 247, 242, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-radius: var(--radius-sm);
-    padding: 16px 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-    animation: floatCard 6s ease-in-out infinite;
-    z-index: 2;
+    padding: 32px 28px;
+    text-align: center;
   }
 
-  .floating-card-1 {
-    top: -20px; right: -30px;
-    display: flex; align-items: center; gap: 10px;
-    animation-delay: 0s;
+  .hero-stat h3 {
+    font-size: 2.2rem;
+    color: var(--charcoal);
+    font-weight: 400;
+    margin-bottom: 6px;
   }
 
-  .floating-card-1 .fc-icon {
-    width: 40px; height: 40px;
-    background: var(--peach-soft);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem;
-  }
-
-  .floating-card-1 .fc-text { font-size: 0.85rem; }
-  .floating-card-1 .fc-text strong { display: block; color: var(--charcoal); }
-  .floating-card-1 .fc-text span { color: var(--text-lighter); font-size: 0.75rem; }
-
-  .floating-card-2 {
-    bottom: 18%; right: -20px;
-    display: flex; align-items: center; gap: 8px;
-    animation-delay: 2s;
-  }
-
-  .floating-card-2 .stars { color: #F5B731; font-size: 0.9rem; letter-spacing: 2px; }
-  .floating-card-2 .fc-rating { font-size: 0.85rem; font-weight: 600; color: var(--charcoal); }
-
-  .floating-card-3 {
-    bottom: 8%; left: -40px;
-    animation-delay: 4s;
-  }
-
-  .floating-card-3 .fc-check {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 0.82rem; font-weight: 500; color: var(--sage-deep);
-  }
-
-  .floating-card-3 .fc-check::before {
-    content: '';
-    width: 22px; height: 22px;
-    background: var(--sage-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235F8A62' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  @keyframes floatCard {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  .hero-stat p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: 'Outfit', sans-serif;
   }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
   /* =================== TRUSTED BAR =================== */
   .trusted-bar {
-    padding: 40px 60px;
-    text-align: center;
-    animation: fadeUp 1s ease 0.8s both;
+    padding: 64px 48px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .trusted-inner {
+    max-width: 1340px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 48px;
   }
 
   .trusted-bar p {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--text-lighter);
-    font-weight: 600;
-    margin-bottom: 24px;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    font-weight: 500;
+    white-space: nowrap;
   }
 
   .trusted-logos {
-    display: flex; align-items: center; justify-content: center;
-    gap: 48px; flex-wrap: wrap;
-    opacity: 0.35;
+    display: flex; align-items: center;
+    gap: 56px; flex: 1;
+    opacity: 0.3;
   }
 
   .trusted-logos span {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.3rem;
-    color: var(--charcoal);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--ivory);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  /* =================== SECTION COMMON =================== */
+  .section-label {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
   }
 
   /* =================== SERVICES =================== */
   .services {
-    padding: 100px 60px;
-    max-width: 1280px;
+    padding: 120px 48px;
+    max-width: 1340px;
     margin: 0 auto;
   }
 
-  .section-header {
-    text-align: center;
-    margin-bottom: 64px;
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 80px;
   }
 
-  .section-label {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--sage-deep);
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-
-  .section-label::before, .section-label::after {
-    content: '';
-    width: 20px; height: 1px;
-    background: var(--sage);
-  }
-
-  .section-header h2 {
-    font-size: clamp(2rem, 3.5vw, 3rem);
+  .services-header h2 {
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    line-height: 1.1;
     color: var(--charcoal);
-    margin-bottom: 16px;
   }
 
-  .section-header p {
-    font-size: 1.05rem;
-    color: var(--text-light);
-    max-width: 520px;
-    margin: 0 auto;
-    line-height: 1.7;
+  .services-header p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 480px;
   }
 
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
   }
 
   .service-card {
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 40px 32px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--cream);
+    padding: 48px 36px;
     position: relative;
     overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: default;
   }
 
-  .service-card::before {
+  .service-card::after {
     content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--sage), var(--peach));
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lift);
-    border-color: transparent;
+    background: white;
   }
 
-  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover::after { transform: scaleX(1); }
 
   .service-icon {
-    width: 60px; height: 60px;
-    border-radius: 16px;
+    width: 48px; height: 48px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.6rem;
-    margin-bottom: 24px;
-    transition: transform 0.3s ease;
+    margin-bottom: 28px;
+    transition: all 0.4s ease;
+    color: var(--gold);
   }
 
-  .service-card:hover .service-icon { transform: scale(1.1) rotate(-3deg); }
-
-  .service-icon.green { background: var(--sage-light); }
-  .service-icon.peach { background: var(--peach-soft); }
-  .service-icon.cream { background: #F5EED9; }
+  .service-card:hover .service-icon {
+    border-color: var(--gold);
+    background: var(--gold-dim);
+  }
 
   .service-card h3 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     color: var(--charcoal);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    font-weight: 400;
   }
 
   .service-card p {
-    font-size: 0.9rem;
-    color: var(--text-light);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
     line-height: 1.7;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    font-weight: 300;
   }
 
-  .service-features {
+  .service-tags {
     display: flex; flex-wrap: wrap; gap: 8px;
   }
 
   .service-tag {
     padding: 6px 14px;
-    background: var(--cream);
-    border-radius: var(--radius-pill);
-    font-size: 0.75rem;
+    border: 1px solid var(--border);
+    font-size: 0.72rem;
     font-weight: 500;
-    color: var(--text-light);
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover .service-tag {
+    border-color: rgba(201, 169, 110, 0.3);
+    color: var(--text-secondary);
+  }
+
+  /* =================== WHY US =================== */
+  .why-section {
+    padding: 120px 48px;
+    background: var(--warm-bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .why-inner {
+    max-width: 1340px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 100px;
+    align-items: start;
+  }
+
+  .why-content h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--charcoal);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .why-content > p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .why-points {
+    display: flex; flex-direction: column; gap: 36px;
+  }
+
+  .why-point {
+    display: flex; align-items: flex-start; gap: 24px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .why-point:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .why-point-icon {
+    width: 48px; height: 48px;
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .why-point h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 6px;
+  }
+
+  .why-point p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .why-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    align-self: start;
+    margin-top: 20px;
+  }
+
+  .why-stat {
+    background: var(--cream);
+    padding: 48px 36px;
+    text-align: center;
+    transition: all 0.4s ease;
+  }
+
+  .why-stat:hover {
+    background: white;
+  }
+
+  .why-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .why-stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    color: var(--text-muted);
   }
 
   /* =================== PRICING =================== */
   .pricing {
-    padding: 100px 60px;
-    background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 50%, var(--cream) 100%);
+    padding: 120px 48px;
   }
 
   .pricing-inner {
-    max-width: 1280px;
+    max-width: 1340px;
     margin: 0 auto;
+  }
+
+  .pricing-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .pricing-header .section-label { justify-content: center; }
+  .pricing-header .section-label::before { display: none; }
+
+  .pricing-header h2 {
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+
+  .pricing-header p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-weight: 300;
   }
 
   .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-    align-items: start;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
   }
 
   .price-card {
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 44px 36px;
+    background: var(--cream);
+    padding: 52px 40px;
     position: relative;
     transition: all 0.4s ease;
   }
 
   .price-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-medium);
+    background: white;
   }
 
   .price-card.featured {
     background: var(--charcoal);
-    border-color: var(--charcoal);
-    color: white;
-    transform: scale(1.04);
-    box-shadow: var(--shadow-lift);
   }
 
-  .price-card.featured:hover {
-    transform: scale(1.04) translateY(-4px);
+  .price-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
   }
 
   .popular-badge {
-    position: absolute;
-    top: -12px; left: 50%; transform: translateX(-50%);
-    padding: 6px 20px;
-    background: linear-gradient(135deg, var(--sage), var(--sage-deep));
-    color: white;
-    border-radius: var(--radius-pill);
-    font-size: 0.72rem;
-    font-weight: 700;
+    display: inline-flex;
+    padding: 6px 18px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    color: var(--gold);
+    font-size: 0.68rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
   }
 
   .price-type {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     font-weight: 600;
-    color: var(--sage-deep);
-    margin-bottom: 8px;
+    color: var(--gold);
+    margin-bottom: 12px;
   }
-
-  .price-card.featured .price-type { color: var(--sage-light); }
 
   .price-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
+    font-size: 1.8rem;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+    font-weight: 400;
   }
 
-  .price-card.featured h3 { color: white; }
+  .price-card.featured h3 { color: var(--ivory); }
+  .price-card.featured .price-type { color: var(--gold-light); }
+  .price-card.featured .price-subtitle { color: #A09B93; }
+  .price-card.featured .price-features li { color: #C4BFB6; }
+  .price-card.featured .price-divider { background: rgba(245, 240, 232, 0.1); }
 
   .price-subtitle {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    margin-bottom: 28px;
-    line-height: 1.5;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.6;
+    font-weight: 300;
   }
-
-  .price-card.featured .price-subtitle { color: #A8A8A8; }
-
-  .price-amount {
-    display: flex; align-items: baseline; gap: 4px;
-    margin-bottom: 8px;
-  }
-
-  .price-dollar {
-    font-family: 'DM Serif Display', serif;
-    font-size: 3rem;
-    line-height: 1;
-  }
-
-  .price-card.featured .price-dollar { color: white; }
-
-  .price-per {
-    font-size: 0.8rem;
-    color: var(--text-lighter);
-  }
-
-  .price-card.featured .price-per { color: #888; }
 
   .price-divider {
     height: 1px;
     background: var(--border);
-    margin: 24px 0;
+    margin-bottom: 28px;
   }
-
-  .price-card.featured .price-divider { background: #444; }
 
   .price-features {
     list-style: none;
-    display: flex; flex-direction: column; gap: 14px;
-    margin-bottom: 32px;
+    display: flex; flex-direction: column; gap: 16px;
+    margin-bottom: 40px;
   }
 
   .price-features li {
-    display: flex; align-items: flex-start; gap: 12px;
+    display: flex; align-items: flex-start; gap: 14px;
     font-size: 0.88rem;
-    color: var(--text-light);
+    color: var(--text-secondary);
     line-height: 1.5;
+    font-weight: 300;
   }
-
-  .price-card.featured .price-features li { color: #CCC; }
 
   .price-features li::before {
     content: '';
     flex-shrink: 0;
-    width: 22px; height: 22px;
-    background: var(--sage-light);
-    border-radius: 50%;
+    width: 20px; height: 20px;
+    border: 1px solid rgba(201, 169, 110, 0.4);
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    margin-top: 1px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235F8A62' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    margin-top: 2px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23C9A96E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
   }
 
-  .price-card.featured .price-features li::before {
-    background: rgba(139, 175, 142, 0.2);
-    color: var(--sage-light);
-  }
-
-  .price-card .btn-primary {
+  .price-card .btn-cta,
+  .price-card .btn-outline {
     width: 100%;
     justify-content: center;
   }
 
-  .price-card.featured .btn-primary {
-    background: white;
-    color: var(--charcoal);
-    box-shadow: none;
+  /* =================== TESTIMONIALS =================== */
+  .testimonials {
+    padding: 120px 48px;
+    background: var(--warm-bg);
+    border-top: 1px solid var(--border);
   }
 
-  .price-card.featured .btn-primary:hover {
-    background: var(--cream);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(255,255,255,0.1);
-  }
-
-  .price-card .btn-secondary { width: 100%; justify-content: center; }
-
-  .price-starting {
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-lighter);
-  }
-
-  .price-custom {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.8rem;
-    color: var(--charcoal);
-    line-height: 1.2;
-  }
-
-  .price-custom-desc {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    line-height: 1.6;
-    margin-top: 8px;
-  }
-
-  .price-card.featured .btn-secondary {
-    border-color: #555;
-    color: white;
-  }
-
-  /* =================== CTA SECTION =================== */
-  .cta-section {
-    padding: 100px 60px;
-    max-width: 1280px;
+  .testimonials-inner {
+    max-width: 1340px;
     margin: 0 auto;
   }
 
-  .cta-box {
-    background: linear-gradient(135deg, var(--sage) 0%, var(--sage-deep) 100%);
-    border-radius: 32px;
-    padding: 80px;
+  .testimonials-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 80px;
+  }
+
+  .testimonials-header h2 {
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    color: var(--charcoal);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .testimonial-large {
+    background: var(--cream);
+    padding: 64px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .testimonial-large .t-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 24px;
+    opacity: 0.5;
+  }
+
+  .testimonial-large .t-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--charcoal);
+    line-height: 1.55;
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 40px;
+  }
+
+  .t-author {
+    display: flex; align-items: center; gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .t-avatar {
+    width: 48px; height: 48px;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .t-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--charcoal);
+  }
+
+  .t-detail {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .testimonials-stack {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .testimonial-small {
+    background: var(--cream);
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .t-stars {
+    display: flex; gap: 4px;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+
+  .testimonial-small .t-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .testimonials-cta {
     text-align: center;
+    margin-top: 64px;
+  }
+
+  .testimonials-cta p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .review-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+
+  .review-link:hover { gap: 14px; }
+
+  /* =================== CTA SECTION =================== */
+  .cta-section {
+    padding: 120px 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-box {
+    max-width: 1340px;
+    margin: 0 auto;
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--border);
+    padding: 100px 80px;
+    text-align: center;
+    background: var(--charcoal);
   }
 
   .cta-box::before {
     content: '';
     position: absolute; inset: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.1), transparent 60%),
-                radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08), transparent 40%);
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(184, 147, 95, 0.08), transparent 60%),
+      radial-gradient(ellipse at 70% 50%, rgba(184, 147, 95, 0.06), transparent 60%);
   }
 
   .cta-box > * { position: relative; z-index: 1; }
 
   .cta-box h2 {
-    font-size: clamp(2rem, 3vw, 2.8rem);
-    color: white;
-    margin-bottom: 16px;
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    color: var(--ivory);
+    margin-bottom: 20px;
   }
 
   .cta-box p {
-    color: rgba(255,255,255,0.8);
+    color: var(--text-secondary);
     font-size: 1.05rem;
-    max-width: 480px;
-    margin: 0 auto 36px;
-    line-height: 1.7;
-  }
-
-  .cta-box .btn-primary {
-    background: white;
-    color: var(--sage-deep);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-    font-size: 1rem;
-    padding: 18px 40px;
-  }
-
-  .cta-box .btn-primary:hover {
-    background: var(--cream);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    max-width: 520px;
+    margin: 0 auto 44px;
+    line-height: 1.75;
+    font-weight: 300;
   }
 
   /* =================== FOOTER =================== */
   footer {
-    padding: 60px 60px 40px;
-    max-width: 1280px;
+    padding: 80px 48px 48px;
+    max-width: 1340px;
     margin: 0 auto;
     border-top: 1px solid var(--border);
   }
@@ -868,304 +965,75 @@
   .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 48px;
+    gap: 56px;
+    margin-bottom: 64px;
   }
 
-  .footer-brand .logo { margin-bottom: 16px; }
-  .footer-brand p {
+  .footer-brand .logo { margin-bottom: 20px; }
+  .footer-brand > p {
     font-size: 0.88rem;
-    color: var(--text-light);
+    color: var(--text-secondary);
     line-height: 1.7;
-    max-width: 280px;
+    max-width: 300px;
+    font-weight: 300;
+  }
+
+  .social-links {
+    display: flex; gap: 12px;
+    margin-top: 24px;
+  }
+
+  .social-link {
+    width: 40px; height: 40px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: all 0.3s;
+  }
+
+  .social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
   }
 
   .footer-col h4 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.8rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--charcoal);
-    font-weight: 700;
-    margin-bottom: 20px;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 24px;
   }
 
   .footer-col a {
     display: block;
     text-decoration: none;
-    color: var(--text-light);
+    color: var(--text-secondary);
     font-size: 0.88rem;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     transition: color 0.3s;
+    font-weight: 300;
   }
 
-  .footer-col a:hover { color: var(--sage-deep); }
+  .footer-col a:hover { color: var(--gold); }
 
   .footer-bottom {
     display: flex; justify-content: space-between; align-items: center;
-    padding-top: 24px;
+    padding-top: 32px;
     border-top: 1px solid var(--border);
-    font-size: 0.8rem;
-    color: var(--text-lighter);
-  }
-
-  .nav-phone {
-    font-weight: 600 !important;
-    color: var(--charcoal) !important;
-    display: flex; align-items: center; gap: 6px;
-  }
-
-  /* =================== WHY US =================== */
-  .why-section {
-    padding: 100px 60px;
-    background: var(--warm-white);
-  }
-
-  .why-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .why-content { animation: fadeUp 0.8s ease both; }
-
-  .why-content h2 {
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    color: var(--charcoal);
-    margin-bottom: 20px;
-    line-height: 1.15;
-  }
-
-  .why-content > p {
-    font-size: 1rem;
-    color: var(--text-light);
-    line-height: 1.7;
-    margin-bottom: 36px;
-  }
-
-  .why-points {
-    display: flex; flex-direction: column; gap: 28px;
-  }
-
-  .why-point {
-    display: flex; align-items: flex-start; gap: 18px;
-  }
-
-  .why-point-icon {
-    width: 52px; height: 52px;
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .why-point-icon.green { background: var(--sage-light); }
-  .why-point-icon.peach { background: var(--peach-soft); }
-  .why-point-icon.cream { background: #F5EED9; }
-
-  .why-point h3 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--charcoal);
-    margin-bottom: 4px;
-  }
-
-  .why-point p {
-    font-size: 0.88rem;
-    color: var(--text-light);
-    line-height: 1.6;
-  }
-
-  .why-visual {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .why-stat-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-
-  .why-stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-soft);
-  }
-
-  .why-stat-card:nth-child(2) { margin-top: 30px; }
-  .why-stat-card:nth-child(3) { margin-top: -30px; }
-
-  .why-stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2.2rem;
-    color: var(--sage-deep);
-    margin-bottom: 4px;
-  }
-
-  .why-stat-label {
     font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-    color: var(--text-light);
-  }
-
-  /* =================== TESTIMONIALS =================== */
-  .testimonials {
-    padding: 100px 60px;
-    background: var(--cream);
-  }
-
-  .testimonials-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
-
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-
-  .testimonial-card {
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 36px 28px;
-    transition: all 0.4s ease;
-    position: relative;
-  }
-
-  .testimonial-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-medium);
-  }
-
-  .testimonial-quote-mark {
-    font-family: 'DM Serif Display', serif;
-    font-size: 3.5rem;
-    color: var(--sage-light);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .testimonial-stars {
-    display: flex; gap: 3px;
-    margin-bottom: 16px;
-    color: #F5B731;
-  }
-
-  .testimonial-text {
-    font-size: 0.92rem;
-    color: var(--text);
-    line-height: 1.75;
-    margin-bottom: 24px;
-    font-style: italic;
-  }
-
-  .testimonial-author {
-    display: flex; align-items: center; gap: 14px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-
-  .testimonial-avatar {
-    width: 44px; height: 44px;
-    background: linear-gradient(135deg, var(--sage-light), var(--peach-soft));
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--sage-deep);
-  }
-
-  .testimonial-name {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--charcoal);
-  }
-
-  .testimonial-detail {
-    font-size: 0.78rem;
-    color: var(--text-lighter);
-  }
-
-  .testimonials-cta {
-    text-align: center;
-    margin-top: 48px;
-  }
-
-  .testimonials-cta p {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin-bottom: 12px;
-  }
-
-  .review-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--sage-deep);
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .review-link:hover { color: var(--charcoal); gap: 10px; }
-
-  /* =================== SOCIAL LINKS =================== */
-  .social-links {
-    display: flex; gap: 12px;
-    margin-top: 20px;
-  }
-
-  .social-link {
-    width: 40px; height: 40px;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    text-decoration: none;
-    color: var(--text-light);
-    transition: all 0.3s;
-  }
-
-  .social-link:hover {
-    background: var(--sage);
-    border-color: var(--sage);
-    color: white;
-    transform: translateY(-2px);
-  }
-
-  /* =================== RESPONSIVE ADDITIONS =================== */
-  @media (max-width: 960px) {
-    .why-grid { grid-template-columns: 1fr; gap: 40px; }
-    .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-  }
-
-  @media (max-width: 768px) {
-    .why-section, .testimonials { padding: 64px 24px; }
-    .why-visual { grid-template-columns: 1fr 1fr; }
-    .why-stat-card:nth-child(2) { margin-top: 0; }
-    .why-stat-card:nth-child(3) { margin-top: 0; }
-    .nav-phone { display: none !important; }
+    color: var(--text-muted);
+    font-weight: 300;
   }
 
   /* =================== QUOTE MODAL =================== */
   .quote-overlay {
     position: fixed; inset: 0; z-index: 200;
-    background: rgba(44, 44, 44, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(44, 40, 36, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex; align-items: center; justify-content: center;
     opacity: 0; visibility: hidden;
     transition: all 0.4s ease;
@@ -1177,17 +1045,16 @@
   }
 
   .quote-modal {
-    background: var(--warm-white);
-    border-radius: 28px;
+    background: var(--cream);
+    border: 1px solid var(--border);
     width: 100%;
-    max-width: 640px;
+    max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
-    padding: 48px;
+    padding: 52px;
     position: relative;
     transform: translateY(30px) scale(0.97);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 32px 80px rgba(0,0,0,0.15);
   }
 
   .quote-overlay.active .quote-modal {
@@ -1197,20 +1064,17 @@
   .quote-close {
     position: absolute; top: 20px; right: 24px;
     width: 40px; height: 40px;
-    background: var(--cream);
+    background: transparent;
     border: 1px solid var(--border);
-    border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-    color: var(--text-light);
+    color: var(--text-muted);
     cursor: pointer;
     transition: all 0.3s;
   }
 
   .quote-close:hover {
-    background: var(--charcoal);
-    color: white;
-    border-color: var(--charcoal);
+    border-color: var(--gold);
+    color: var(--gold);
   }
 
   .quote-step-header { margin-bottom: 36px; }
@@ -1222,44 +1086,32 @@
   }
 
   .quote-step-desc {
-    font-size: 0.95rem;
-    color: var(--text-light);
+    font-size: 0.92rem;
+    color: var(--text-secondary);
     line-height: 1.6;
+    font-weight: 300;
   }
 
   .quote-type-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 1px;
+    background: var(--border);
   }
 
   .quote-type-card {
-    background: var(--cream);
-    border: 2px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px 24px;
+    background: var(--warm-bg);
+    border: none;
+    padding: 36px 28px;
     text-align: left;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: inherit;
+    position: relative;
   }
 
   .quote-type-card:hover {
-    border-color: var(--sage);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-medium);
-    background: white;
-  }
-
-  .quote-type-card:active {
-    transform: translateY(-2px) scale(0.98);
-  }
-
-  .qtc-icon {
-    font-size: 2.2rem;
-    margin-bottom: 16px;
+    background: var(--ivory-dim);
   }
 
   .quote-type-card h3 {
@@ -1270,51 +1122,42 @@
 
   .quote-type-card p {
     font-size: 0.82rem;
-    color: var(--text-light);
+    color: var(--text-muted);
     line-height: 1.5;
+    font-weight: 300;
   }
 
-  .qtc-arrow {
-    position: absolute;
-    top: 24px; right: 24px;
-    width: 32px; height: 32px;
-    background: var(--sage-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.9rem;
-    color: var(--sage-deep);
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: all 0.3s ease;
-  }
-
-  .quote-type-card:hover .qtc-arrow {
-    opacity: 1;
-    transform: translateX(0);
+  .qtc-icon {
+    color: var(--gold);
+    margin-bottom: 16px;
   }
 
   .quote-back {
     background: none; border: none;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-light);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-muted);
     cursor: pointer;
     margin-bottom: 20px;
     padding: 4px 0;
     transition: color 0.3s;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
-  .quote-back:hover { color: var(--charcoal); }
+  .quote-back:hover { color: var(--gold); }
 
   .quote-type-badge {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 6px 16px;
-    background: var(--sage-light);
-    color: var(--sage-deep);
-    border-radius: var(--radius-pill);
-    font-size: 0.78rem;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    color: var(--gold);
+    font-size: 0.72rem;
     font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     margin-bottom: 14px;
   }
 
@@ -1327,26 +1170,29 @@
   }
 
   .form-group label {
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--charcoal);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
   .form-group .optional {
-    font-weight: 400;
-    color: var(--text-lighter);
+    font-weight: 300;
+    color: var(--text-muted);
+    text-transform: none;
+    letter-spacing: 0;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
     padding: 14px 18px;
-    border: 2px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 0.92rem;
-    color: var(--charcoal);
+    border: 1px solid var(--border);
     background: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    color: var(--charcoal);
     transition: all 0.3s ease;
     outline: none;
     -webkit-appearance: none;
@@ -1355,21 +1201,26 @@
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
-    border-color: var(--sage);
-    box-shadow: 0 0 0 4px rgba(139, 175, 142, 0.12);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
   }
 
   .form-group input::placeholder,
   .form-group textarea::placeholder {
-    color: var(--text-lighter);
+    color: var(--text-muted);
   }
 
   .form-group select {
     cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%237A7A7A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%236B665E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
+  }
+
+  .form-group select option {
+    background: white;
+    color: var(--charcoal);
   }
 
   .form-group textarea { resize: vertical; min-height: 80px; }
@@ -1384,11 +1235,8 @@
     margin-top: 8px;
     width: 100%;
     justify-content: center;
-    padding: 18px;
-    font-size: 1rem;
   }
 
-  /* Success state */
   .quote-success {
     text-align: center;
     padding: 40px 0;
@@ -1396,12 +1244,10 @@
 
   .success-icon {
     width: 72px; height: 72px;
-    background: var(--sage-light);
-    color: var(--sage-deep);
-    border-radius: 50%;
+    border: 1px solid rgba(201, 169, 110, 0.4);
+    color: var(--gold);
     display: flex; align-items: center; justify-content: center;
     font-size: 2rem;
-    font-weight: 700;
     margin: 0 auto 28px;
     animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   }
@@ -1419,15 +1265,15 @@
 
   .quote-success p {
     font-size: 0.95rem;
-    color: var(--text-light);
+    color: var(--text-secondary);
     max-width: 360px;
     margin: 0 auto 32px;
     line-height: 1.7;
+    font-weight: 300;
   }
 
-  .quote-success .btn-primary { display: inline-flex; }
+  .quote-success .btn-cta { display: inline-flex; }
 
-  /* Step transitions */
   .quote-step {
     animation: stepFadeIn 0.4s ease both;
   }
@@ -1445,18 +1291,11 @@
     80% { transform: translateX(4px); }
   }
 
-  @media (max-width: 768px) {
-    .quote-modal { padding: 32px 24px; }
-    .quote-type-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .quote-step-header h2 { font-size: 1.6rem; }
-  }
-
   /* =================== SCROLL ANIMATIONS =================== */
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .reveal.visible {
@@ -1467,8 +1306,6 @@
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-  .reveal-delay-5 { transition-delay: 0.5s; }
 
   /* =================== MOBILE MENU =================== */
   .mobile-toggle {
@@ -1480,45 +1317,59 @@
 
   .mobile-toggle span {
     display: block;
-    width: 24px; height: 2px;
-    background: var(--charcoal);
-    border-radius: 2px;
+    width: 24px; height: 1.5px;
+    background: white;
     transition: all 0.3s ease;
   }
 
   /* =================== RESPONSIVE =================== */
+  @media (max-width: 1100px) {
+    .services-header { grid-template-columns: 1fr; gap: 24px; }
+    .why-grid { grid-template-columns: 1fr; gap: 60px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonials-header { flex-direction: column; align-items: flex-start; gap: 24px; }
+  }
+
   @media (max-width: 960px) {
-    .hero { padding: 120px 32px 60px; }
     .hero-content {
       grid-template-columns: 1fr;
       gap: 48px;
+      padding-bottom: 80px;
     }
-    .hero-right { max-width: 400px; margin: 0 auto; }
+    .hero-right { max-width: 500px; }
     .services-grid, .pricing-grid {
       grid-template-columns: 1fr;
-      max-width: 460px;
-      margin: 0 auto;
     }
-    .price-card.featured { transform: scale(1); }
-    .price-card.featured:hover { transform: translateY(-4px); }
     .footer-grid {
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 36px;
     }
-    .cta-box { padding: 48px 32px; }
+    .cta-box { padding: 64px 40px; }
   }
 
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
+    nav.scrolled { padding: 12px 24px; }
     .nav-links { display: none; }
     .mobile-toggle { display: flex; }
-    .hero { padding: 100px 24px 48px; }
-    .hero h1 { font-size: 2.4rem; }
-    .hero-stats { gap: 24px; }
-    .services, .pricing, .cta-section { padding: 64px 24px; }
+    .hero { min-height: 85vh; }
+    .hero-content { padding: 0 24px 60px; }
+    .hero h1 { font-size: 2.6rem; }
+    .hero-stats { grid-template-columns: 1fr 1fr 1fr; }
+    .services, .why-section, .pricing, .testimonials, .cta-section { padding: 80px 24px; }
     footer { padding: 48px 24px 32px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-    .floating-card { display: none; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .trusted-inner { flex-direction: column; gap: 24px; }
+    .trusted-logos { flex-wrap: wrap; justify-content: center; gap: 32px; }
+    .why-stats { grid-template-columns: 1fr 1fr; }
+    .quote-modal { padding: 36px 24px; }
+    .quote-type-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-stats { grid-template-columns: 1fr; }
+    .hero-stat { padding: 24px 20px; }
   }
 </style>
 </head>
@@ -1526,7 +1377,10 @@
 
 <!-- SVG Icon Sprite -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
-  <symbol id="icon-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </symbol>
+  <symbol id="icon-star-fill" viewBox="0 0 24 24" fill="currentColor" stroke="none">
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
   </symbol>
   <symbol id="icon-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1547,53 +1401,35 @@
   <symbol id="icon-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/>
   </symbol>
-  <symbol id="icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-  </symbol>
-  <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-  </symbol>
-  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="20 6 9 17 4 12"/>
+  <symbol id="icon-window" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="20" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="2" y1="12" x2="22" y2="12"/>
   </symbol>
   <symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
   </symbol>
-  <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-  </symbol>
-  <symbol id="icon-window" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="2" y="3" width="20" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="2" y1="12" x2="22" y2="12"/>
-  </symbol>
-  <symbol id="icon-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-  </symbol>
-  <symbol id="icon-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-  </symbol>
   <symbol id="icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
   </symbol>
-  <symbol id="icon-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+  <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
   </symbol>
-  <symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+  <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
   </symbol>
 </svg>
 
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="logo">
-    <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#icon-logo"/></svg></div>
+    <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--gold);"><use href="#icon-star"/></svg></div>
     CleanNova
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#why">Why Us</a></li>
-    <li><a href="mailto:cleannovasolutions@gmail.com" style="font-weight:600;color:var(--charcoal);">cleannovasolutions@gmail.com</a></li>
-    <li><a href="#book" class="btn-primary">Book a Clean →</a></li>
+    <li><a href="mailto:cleannovasolutions@gmail.com" class="nav-email">cleannovasolutions@gmail.com</a></li>
+    <li><a href="#book" class="btn-cta"><span>Book a Clean</span></a></li>
   </ul>
   <button class="mobile-toggle" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1602,29 +1438,25 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-shapes">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-    <div class="hero-blob hero-blob-3"></div>
-  </div>
+  <div class="hero-image"></div>
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-badge">
-        <span style="width:8px;height:8px;background:#C4844E;border-radius:50%;display:inline-block;"></span> Serving all Chicago suburbs
-      </div>
+      <div class="hero-overline">Serving all Chicago suburbs</div>
       <h1>A cleaner space,<br>a <em>happier</em> you.</h1>
       <p class="hero-desc">Trusted by homeowners and businesses across Naperville, Schaumburg, Evanston, Oak Park, and every suburb in between. Reliable cleaning that fits your schedule.</p>
       <div class="hero-ctas">
-        <a href="#book" class="btn-primary">Get a Free Quote →</a>
-        <a href="#services" class="btn-secondary">See Services</a>
+        <a href="#book" class="btn-cta"><span>Get a Free Quote</span></a>
+        <a href="#services" class="btn-outline">See Services</a>
       </div>
+    </div>
+    <div class="hero-right">
       <div class="hero-stats">
         <div class="hero-stat">
           <h3>2,400+</h3>
           <p>Happy Clients</p>
         </div>
         <div class="hero-stat">
-          <h3>4.9<svg width="18" height="18" viewBox="0 0 24 24" style="color:#F5B731;vertical-align:-2px;margin-left:2px;"><use href="#icon-star"/></svg></h3>
+          <h3>4.9</h3>
           <p>Average Rating</p>
         </div>
         <div class="hero-stat">
@@ -1633,94 +1465,90 @@
         </div>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-visual">
-        <div class="hero-visual-inner">
-          <div class="hero-visual-icon"><svg width="72" height="72" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-sparkles"/></svg></div>
-          <div class="hero-visual-text">Spotless clean</div>
-        </div>
-      </div>
-      <div class="floating-card floating-card-1">
-        <div class="fc-icon"><svg width="22" height="22" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-calendar"/></svg></div>
-        <div class="fc-text">
-          <strong>Next clean: Tomorrow</strong>
-          <span>9:00 AM – 12:00 PM</span>
-        </div>
-      </div>
-      <div class="floating-card floating-card-2">
-        <div class="stars" style="color:#F5B731;display:flex;gap:2px;"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg></div>
-        <div class="fc-rating">4.9 / 5</div>
-      </div>
-      <div class="floating-card floating-card-3">
-        <div class="fc-check">Insured & bonded</div>
-      </div>
-    </div>
   </div>
 </section>
 
+<!-- TRUSTED BAR -->
+<div class="trusted-bar reveal">
+  <div class="trusted-inner">
+    <p>Trusted across Chicagoland</p>
+    <div class="trusted-logos">
+      <span>Naperville</span>
+      <span>Schaumburg</span>
+      <span>Evanston</span>
+      <span>Oak Park</span>
+      <span>Arlington Heights</span>
+      <span>Downers Grove</span>
+      <span>Orland Park</span>
+    </div>
+  </div>
+</div>
+
 <!-- SERVICES -->
 <section class="services" id="services">
-  <div class="section-header reveal">
-    <div class="section-label">What We Do</div>
-    <h2>Every space deserves<br>the nova treatment</h2>
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2>Every space deserves<br>the nova treatment</h2>
+    </div>
     <p>From suburban homes to office parks across Chicagoland, we bring the same care, detail, and eco-friendly products to every clean.</p>
   </div>
   <div class="services-grid">
     <div class="service-card reveal reveal-delay-1">
-      <div class="service-icon green"><svg width="28" height="28" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-home"/></svg></div>
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-home"/></svg></div>
       <h3>Residential Cleaning</h3>
       <p>Weekly, bi-weekly, or one-time deep cleans for homes and apartments. We handle the scrubbing so you can enjoy your space.</p>
-      <div class="service-features">
+      <div class="service-tags">
         <span class="service-tag">Kitchens & baths</span>
         <span class="service-tag">Bedrooms</span>
         <span class="service-tag">Living areas</span>
       </div>
     </div>
     <div class="service-card reveal reveal-delay-2">
-      <div class="service-icon peach"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#C4844E;"><use href="#icon-building"/></svg></div>
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-building"/></svg></div>
       <h3>Commercial Cleaning</h3>
       <p>Keep your workspace productive with scheduled cleaning plans built around your business hours. No disruptions, just results.</p>
-      <div class="service-features">
+      <div class="service-tags">
         <span class="service-tag">Offices</span>
         <span class="service-tag">Retail</span>
         <span class="service-tag">Co-working</span>
       </div>
     </div>
     <div class="service-card reveal reveal-delay-3">
-      <div class="service-icon cream"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#B8A050;"><use href="#icon-sparkles"/></svg></div>
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-sparkles"/></svg></div>
       <h3>Deep Clean & Move-Out</h3>
       <p>Moving in or out? Need a serious refresh? Our deep clean covers every surface, corner, and appliance top to bottom.</p>
-      <div class="service-features">
+      <div class="service-tags">
         <span class="service-tag">Appliances</span>
         <span class="service-tag">Inside cabinets</span>
         <span class="service-tag">Baseboards</span>
       </div>
     </div>
     <div class="service-card reveal reveal-delay-1">
-      <div class="service-icon peach"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#C4844E;"><use href="#icon-window"/></svg></div>
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-window"/></svg></div>
       <h3>Window Cleaning</h3>
       <p>Crystal-clear windows inside and out. We use purified water systems for a streak-free, spotless finish every time.</p>
-      <div class="service-features">
+      <div class="service-tags">
         <span class="service-tag">Interior</span>
         <span class="service-tag">Exterior</span>
         <span class="service-tag">Screens</span>
       </div>
     </div>
     <div class="service-card reveal reveal-delay-2">
-      <div class="service-icon green"><svg width="28" height="28" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-leaf"/></svg></div>
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-leaf"/></svg></div>
       <h3>Eco-Friendly Options</h3>
       <p>All-natural, non-toxic products that are safe for kids, pets, and the planet — without compromising on clean.</p>
-      <div class="service-features">
+      <div class="service-tags">
         <span class="service-tag">Plant-based</span>
         <span class="service-tag">Non-toxic</span>
         <span class="service-tag">Pet safe</span>
       </div>
     </div>
     <div class="service-card reveal reveal-delay-3">
-      <div class="service-icon cream"><svg width="28" height="28" viewBox="0 0 24 24" style="color:#B8A050;"><use href="#icon-clipboard"/></svg></div>
+      <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-clipboard"/></svg></div>
       <h3>Custom Plans</h3>
       <p>Need something specific? We'll build a cleaning plan tailored to your space, schedule, and priorities.</p>
-      <div class="service-features">
+      <div class="service-tags">
         <span class="service-tag">Flexible</span>
         <span class="service-tag">Scalable</span>
         <span class="service-tag">Personalized</span>
@@ -1739,21 +1567,21 @@
         <p>We're a local Chicago-area team — every member is background-checked, insured, and trained to our standards. We show up on time, communicate clearly, and leave your space better than we found it.</p>
         <div class="why-points">
           <div class="why-point">
-            <div class="why-point-icon green"><svg width="24" height="24" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-shield"/></svg></div>
+            <div class="why-point-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-shield"/></svg></div>
             <div>
               <h3>Background-checked & insured</h3>
               <p>Every cleaner passes a thorough background check and carries full liability insurance. Your home and belongings are always protected.</p>
             </div>
           </div>
           <div class="why-point">
-            <div class="why-point-icon peach"><svg width="24" height="24" viewBox="0 0 24 24" style="color:#C4844E;"><use href="#icon-leaf"/></svg></div>
+            <div class="why-point-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-leaf"/></svg></div>
             <div>
               <h3>Eco-friendly products only</h3>
               <p>We use plant-based, non-toxic cleaning products that are safe for kids, pets, and anyone with sensitivities. No harsh chemicals, ever.</p>
             </div>
           </div>
           <div class="why-point">
-            <div class="why-point-icon cream"><svg width="24" height="24" viewBox="0 0 24 24" style="color:#B8A050;"><use href="#icon-heart"/></svg></div>
+            <div class="why-point-icon"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#icon-heart"/></svg></div>
             <div>
               <h3>Satisfaction guarantee</h3>
               <p>Not 100% happy with your clean? Let us know within 24 hours and we'll re-clean the areas of concern at no extra cost.</p>
@@ -1761,20 +1589,20 @@
           </div>
         </div>
       </div>
-      <div class="why-visual reveal reveal-delay-2">
-        <div class="why-stat-card">
+      <div class="why-stats reveal reveal-delay-2">
+        <div class="why-stat">
           <div class="why-stat-num">2,400+</div>
           <div class="why-stat-label">Happy clients</div>
         </div>
-        <div class="why-stat-card">
+        <div class="why-stat">
           <div class="why-stat-num">4.9 / 5</div>
           <div class="why-stat-label">Average rating</div>
         </div>
-        <div class="why-stat-card">
+        <div class="why-stat">
           <div class="why-stat-num">98%</div>
           <div class="why-stat-label">Rebook rate</div>
         </div>
-        <div class="why-stat-card">
+        <div class="why-stat">
           <div class="why-stat-num">24hr</div>
           <div class="why-stat-label">Support response</div>
         </div>
@@ -1786,7 +1614,7 @@
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="pricing-inner">
-    <div class="section-header reveal">
+    <div class="pricing-header reveal">
       <div class="section-label">Our Plans</div>
       <h2>Find the right clean<br>for your space</h2>
       <p>Every space is different. Pick the plan that fits your needs and we'll handle the rest.</p>
@@ -1804,7 +1632,7 @@
           <li>Trash emptied & replaced</li>
           <li>Eco-friendly products included</li>
         </ul>
-        <a href="#book" class="btn-secondary" data-type="residential">Get a Quote</a>
+        <a href="#book" class="btn-outline" data-type="residential">Get a Quote</a>
       </div>
       <div class="price-card featured reveal reveal-delay-2">
         <div class="popular-badge">Most Popular</div>
@@ -1819,7 +1647,7 @@
           <li>Window sills & tracks</li>
           <li>Priority scheduling</li>
         </ul>
-        <a href="#book" class="btn-primary" data-type="residential">Get a Quote →</a>
+        <a href="#book" class="btn-cta" data-type="residential"><span>Get a Quote</span></a>
       </div>
       <div class="price-card reveal reveal-delay-3">
         <div class="price-type">Business</div>
@@ -1833,7 +1661,7 @@
           <li>Monthly reporting included</li>
           <li>Satisfaction guarantee</li>
         </ul>
-        <a href="#book" class="btn-secondary" data-type="commercial">Get a Custom Quote</a>
+        <a href="#book" class="btn-outline" data-type="commercial">Get a Custom Quote</a>
       </div>
     </div>
   </div>
@@ -1842,52 +1670,58 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="reviews">
   <div class="testimonials-inner">
-    <div class="section-header reveal">
-      <div class="section-label">Reviews</div>
-      <h2>Don't take our word for it</h2>
-      <p>Here's what real customers have to say about working with CleanNova.</p>
+    <div class="testimonials-header reveal">
+      <div>
+        <div class="section-label">Reviews</div>
+        <h2>Don't take our<br>word for it</h2>
+      </div>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal reveal-delay-1">
-        <div class="testimonial-quote-mark">"</div>
-        <div class="testimonial-stars"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg></div>
-        <p class="testimonial-text">The team was on time, super thorough, and left my Naperville townhome looking brand new. I've tried three other cleaning services before and this is the first one I'm actually keeping. Already booked my next one.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">JM</div>
+    <div class="testimonials-grid reveal">
+      <div class="testimonial-large">
+        <div>
+          <div class="t-quote">"</div>
+          <p class="t-text">The team was on time, super thorough, and left my Naperville townhome looking brand new. I've tried three other cleaning services before and this is the first one I'm actually keeping. Already booked my next one.</p>
+        </div>
+        <div class="t-author">
+          <div class="t-avatar">JM</div>
           <div>
-            <div class="testimonial-name">Jessica M.</div>
-            <div class="testimonial-detail">Naperville — bi-weekly clean</div>
+            <div class="t-name">Jessica M.</div>
+            <div class="t-detail">Naperville — bi-weekly clean</div>
           </div>
         </div>
       </div>
-      <div class="testimonial-card reveal reveal-delay-2">
-        <div class="testimonial-quote-mark">"</div>
-        <div class="testimonial-stars"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg></div>
-        <p class="testimonial-text">We switched our office cleaning to CleanNova three months ago and the difference is night and day. They work around our hours, the team is consistent, and our employees actually noticed. That says a lot.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">DK</div>
+      <div class="testimonials-stack">
+        <div class="testimonial-small">
           <div>
-            <div class="testimonial-name">David K.</div>
-            <div class="testimonial-detail">Office Manager — Schaumburg</div>
+            <div class="t-stars"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg></div>
+            <p class="t-text">We switched our office cleaning to CleanNova three months ago and the difference is night and day. They work around our hours, the team is consistent, and our employees actually noticed.</p>
+          </div>
+          <div class="t-author">
+            <div class="t-avatar">DK</div>
+            <div>
+              <div class="t-name">David K.</div>
+              <div class="t-detail">Office Manager — Schaumburg</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-3">
-        <div class="testimonial-quote-mark">"</div>
-        <div class="testimonial-stars"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star"/></svg></div>
-        <p class="testimonial-text">Hired them for a move-out deep clean on my Evanston apartment and got my entire security deposit back. They cleaned things I didn't even know were dirty. Worth every penny.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">AT</div>
+        <div class="testimonial-small">
           <div>
-            <div class="testimonial-name">Alex T.</div>
-            <div class="testimonial-detail">Move-out deep clean — Evanston</div>
+            <div class="t-stars"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg></div>
+            <p class="t-text">Hired them for a move-out deep clean on my Evanston apartment and got my entire security deposit back. They cleaned things I didn't even know were dirty. Worth every penny.</p>
+          </div>
+          <div class="t-author">
+            <div class="t-avatar">AT</div>
+            <div>
+              <div class="t-name">Alex T.</div>
+              <div class="t-detail">Move-out deep clean — Evanston</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="testimonials-cta reveal">
       <p>Had a great experience? We'd love to hear from you.</p>
-      <a href="#" class="review-link">Leave us a Google review →</a>
+      <a href="#" class="review-link">Leave us a Google review &rarr;</a>
     </div>
   </div>
 </section>
@@ -1897,7 +1731,7 @@
   <div class="cta-box reveal">
     <h2>Ready for a spotless space?</h2>
     <p>Join hundreds of Chicago-area homeowners and businesses who trust CleanNova. No commitments, no contracts — just a cleaner, happier space.</p>
-    <a href="#book" class="btn-primary">Book Your First Clean →</a>
+    <a href="#book" class="btn-cta"><span>Book Your First Clean</span></a>
   </div>
 </section>
 
@@ -1906,7 +1740,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#" class="logo">
-        <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24"><use href="#icon-logo"/></svg></div>
+        <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--gold);"><use href="#icon-star"/></svg></div>
         CleanNova
       </a>
       <p>Trusted cleaning services for homes and businesses across the Chicago suburbs. Proudly local.</p>
@@ -1934,13 +1768,13 @@
     <div class="footer-col">
       <h4>Get in Touch</h4>
       <a href="mailto:cleannovasolutions@gmail.com">cleannovasolutions@gmail.com</a>
-      <p style="font-size:0.82rem;color:var(--text-lighter);margin-top:8px;line-height:1.5;">Mon – Fri: 8am – 6pm<br>Sat – Sun: 9am – 4pm</p>
-      <p style="font-size:0.82rem;color:var(--text-lighter);margin-top:12px;line-height:1.5;"><strong style="color:var(--charcoal);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;">Service Area</strong><br>All Chicago suburbs including Naperville, Schaumburg, Evanston, Oak Park, Arlington Heights, Downers Grove, Orland Park & more</p>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin-top:12px;line-height:1.6;font-weight:300;">Mon – Fri: 8am – 6pm<br>Sat – Sun: 9am – 4pm</p>
+      <p style="font-size:0.82rem;color:var(--text-muted);margin-top:16px;line-height:1.6;font-weight:300;"><strong style="color:var(--text-secondary);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;font-weight:600;">Service Area</strong><br>All Chicago suburbs including Naperville, Schaumburg, Evanston, Oak Park, Arlington Heights, Downers Grove, Orland Park & more</p>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 CleanNova All rights reserved.</span>
-    <span>Made with care <svg width="12" height="12" viewBox="0 0 24 24" style="color:var(--sage);vertical-align:-1px;"><use href="#icon-logo"/></svg></span>
+    <span>&copy; 2026 CleanNova. All rights reserved.</span>
+    <span>Designed with intention</span>
   </div>
 </footer>
 
@@ -1958,23 +1792,21 @@
       </div>
       <div class="quote-type-grid">
         <button class="quote-type-card" onclick="selectType('residential')">
-          <div class="qtc-icon"><svg width="36" height="36" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-home"/></svg></div>
+          <div class="qtc-icon"><svg width="32" height="32" viewBox="0 0 24 24"><use href="#icon-home"/></svg></div>
           <h3>Residential</h3>
           <p>Houses, apartments, condos, townhomes</p>
-          <div class="qtc-arrow">→</div>
         </button>
         <button class="quote-type-card" onclick="selectType('commercial')">
-          <div class="qtc-icon"><svg width="36" height="36" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-building"/></svg></div>
+          <div class="qtc-icon"><svg width="32" height="32" viewBox="0 0 24 24"><use href="#icon-building"/></svg></div>
           <h3>Commercial</h3>
           <p>Offices, retail, co-working, warehouses</p>
-          <div class="qtc-arrow">→</div>
         </button>
       </div>
     </div>
 
     <!-- Step 2: Form -->
     <div class="quote-step" id="quoteStep2" style="display:none;">
-      <button class="quote-back" onclick="goBack()">← Back</button>
+      <button class="quote-back" onclick="goBack()">&larr; Back</button>
       <div class="quote-step-header">
         <div class="quote-type-badge" id="typeBadge">Residential</div>
         <h2>Tell us about<br>your space</h2>
@@ -2013,8 +1845,8 @@
           <label for="qNotes">Anything else? <span class="optional">(optional)</span></label>
           <textarea id="qNotes" rows="3" placeholder="Pets, specific areas of concern, access instructions..."></textarea>
         </div>
-        <button class="btn-primary quote-submit" onclick="submitQuote()">
-          Get My Free Quote →
+        <button class="btn-cta quote-submit" onclick="submitQuote()">
+          <span>Get My Free Quote</span>
         </button>
       </div>
     </div>
@@ -2022,10 +1854,10 @@
     <!-- Step 3: Success -->
     <div class="quote-step" id="quoteStep3" style="display:none;">
       <div class="quote-success">
-        <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" style="color:var(--sage-deep);"><use href="#icon-check"/></svg></div>
-        <h2>You're all set!</h2>
+        <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24"><use href="#icon-check"/></svg></div>
+        <h2>You're all set.</h2>
         <p>We've received your request and will send a custom quote to your email within 2 hours.</p>
-        <button class="btn-primary" onclick="closeQuote()">Back to Site →</button>
+        <button class="btn-cta" onclick="closeQuote()"><span>Back to Site</span></button>
       </div>
     </div>
 
@@ -2093,7 +1925,6 @@
   function closeQuote() {
     overlay.classList.remove('active');
     document.body.style.overflow = '';
-    // Reset after animation
     setTimeout(() => {
       showStep(1);
       document.querySelectorAll('.quote-form input, .quote-form select, .quote-form textarea')
@@ -2106,27 +1937,20 @@
     const target = [step1, step2, step3][num - 1];
     target.style.display = 'block';
     target.style.animation = 'none';
-    target.offsetHeight; // trigger reflow
+    target.offsetHeight;
     target.style.animation = 'stepFadeIn 0.4s ease both';
   }
 
   function selectType(type) {
     selectedType = type;
     const badge = document.getElementById('typeBadge');
-    if (type === 'residential') {
-      badge.textContent = 'Residential';
-    } else {
-      badge.textContent = 'Commercial';
-    }
+    badge.textContent = type === 'residential' ? 'Residential' : 'Commercial';
     showStep(2);
   }
 
-  function goBack() {
-    showStep(1);
-  }
+  function goBack() { showStep(1); }
 
   function submitQuote() {
-    // Basic validation
     const name = document.getElementById('qName').value.trim();
     const email = document.getElementById('qEmail').value.trim();
     const address = document.getElementById('qAddress').value.trim();
@@ -2142,30 +1966,22 @@
       return;
     }
 
-    // Disable button while sending
     const btn = document.querySelector('.quote-submit');
-    const originalText = btn.textContent;
-    btn.textContent = 'Sending...';
+    const originalHTML = btn.innerHTML;
+    btn.innerHTML = '<span>Sending...</span>';
     btn.style.opacity = '0.7';
     btn.style.pointerEvents = 'none';
 
-    // =====================================================
-    // FORMSPREE: Replace YOUR_FORM_ID with your actual ID
-    // Sign up free at https://formspree.io, create a form,
-    // and paste the ID below (e.g. 'xpzvqkdl')
-    // =====================================================
     const FORMSPREE_ID = 'mvzbqory';
 
     fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        name: name,
-        email: email,
-        address: address,
+        name, email, address,
         square_feet: sqft,
         frequency: freq,
-        notes: notes,
+        notes,
         service_type: selectedType || 'Not specified',
         _subject: `New ${selectedType || ''} cleaning quote request from ${name}`
       })
@@ -2174,32 +1990,23 @@
       if (response.ok) {
         showStep(3);
       } else {
-        alert('Something went wrong. Please try again or call us directly.');
-        btn.textContent = originalText;
+        alert('Something went wrong. Please try again or email us directly.');
+        btn.innerHTML = originalHTML;
         btn.style.opacity = '1';
         btn.style.pointerEvents = 'auto';
       }
     })
     .catch(() => {
       alert('Connection error. Please check your internet and try again.');
-      btn.textContent = originalText;
+      btn.innerHTML = originalHTML;
       btn.style.opacity = '1';
       btn.style.pointerEvents = 'auto';
     });
   }
 
-  // Close on overlay click
-  overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) closeQuote();
-  });
-
-  // Close on X button
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeQuote(); });
   document.getElementById('quoteClose').addEventListener('click', closeQuote);
-
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeQuote();
-  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeQuote(); });
 </script>
 
 </body>

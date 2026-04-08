@@ -607,24 +607,118 @@
     margin-top: 48px;
   }
 
+  /* =================== MOBILE MENU =================== */
+  .mobile-toggle {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer;
+    padding: 8px;
+    z-index: 301;
+    position: relative;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 24px; height: 1.5px;
+    background: var(--charcoal);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-toggle.active span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+    background: var(--ivory);
+  }
+  .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+  .mobile-toggle.active span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+    background: var(--ivory);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(26, 23, 20, 0.97);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 24px;
+    transition: color 0.3s;
+    display: block;
+    text-align: center;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu a:active { color: var(--gold); }
+
+  .mobile-menu .mobile-menu-email {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.92rem;
+    color: var(--gold-light);
+    margin-top: 12px;
+    padding: 14px 24px;
+  }
+
   /* =================== RESPONSIVE =================== */
   @media (max-width: 960px) {
     .quote-page {
       grid-template-columns: 1fr;
-      gap: 60px;
-      padding: 48px 24px 72px;
+      gap: 48px;
+      padding: 36px 20px 60px;
     }
     .quote-info { position: static; }
   }
 
-  @media (max-width: 600px) {
-    nav { padding: 16px 24px; }
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
     .logo { font-size: 1.4rem; }
-    .nav-right .nav-email { display: none; }
-    .quote-form-card { padding: 36px 24px; }
+    .logo-mark { width: 32px; height: 32px; }
+    .nav-right { display: none; }
+    .mobile-toggle { display: flex; }
+    .mobile-menu { display: flex; }
+  }
+
+  @media (max-width: 600px) {
+    .quote-page { padding: 28px 16px 60px; gap: 36px; }
+    .quote-info h1 { font-size: 2rem; }
+    .quote-form-card { padding: 28px 18px; }
     .type-selection { grid-template-columns: 1fr; }
+    .type-card { padding: 28px 20px; }
     .field-row { grid-template-columns: 1fr; }
     .steps-indicator span { display: none; }
+    .form-actions { flex-direction: column; }
+    .form-actions .btn-cta,
+    .form-actions .btn-back {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      min-height: 52px;
+    }
+    .trust-point { gap: 14px; }
+    .trust-icon { width: 40px; height: 40px; }
+    .testimonial-card { padding: 24px; }
+    .testimonial-card blockquote { font-size: 1rem; }
+    .mini-footer { padding: 28px 16px; font-size: 0.72rem; }
   }
 </style>
 </head>
@@ -671,7 +765,15 @@
     <a href="index.html">&larr; Back to Home</a>
     <a href="mailto:cleannovasolutions@gmail.com" class="nav-email">cleannovasolutions@gmail.com</a>
   </div>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="mailto:cleannovasolutions@gmail.com" class="mobile-menu-email">cleannovasolutions@gmail.com</a>
+</div>
 
 <!-- MAIN CONTENT -->
 <main class="quote-page">
@@ -941,6 +1043,33 @@
   const params = new URLSearchParams(window.location.search);
   if (params.get('type') === 'residential') pickType('residential');
   if (params.get('type') === 'commercial') pickType('commercial');
+
+  // Mobile menu toggle
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.contains('open');
+      if (isOpen) {
+        mobileMenu.classList.remove('open');
+        mobileToggle.classList.remove('active');
+        document.body.style.overflow = '';
+      } else {
+        mobileMenu.classList.add('open');
+        mobileToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.remove('open');
+        mobileToggle.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
 </script>
 
 </body>

@@ -1313,6 +1313,8 @@
     flex-direction: column; gap: 5px;
     background: none; border: none; cursor: pointer;
     padding: 8px;
+    z-index: 301;
+    position: relative;
   }
 
   .mobile-toggle span {
@@ -1320,6 +1322,83 @@
     width: 24px; height: 1.5px;
     background: white;
     transition: all 0.3s ease;
+  }
+
+  nav.scrolled .mobile-toggle span { background: var(--charcoal); }
+
+  /* Hamburger to X animation */
+  .mobile-toggle.active span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+    background: var(--ivory);
+  }
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-toggle.active span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+    background: var(--ivory);
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: rgba(26, 23, 20, 0.97);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 24px;
+    transition: color 0.3s;
+    display: block;
+    text-align: center;
+  }
+
+  .mobile-menu a:hover,
+  .mobile-menu a:active { color: var(--gold); }
+
+  .mobile-menu .mobile-menu-email {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.92rem;
+    color: var(--gold-light);
+    margin-top: 12px;
+    padding: 14px 24px;
+  }
+
+  .mobile-menu .mobile-menu-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 18px 48px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    min-height: 56px;
   }
 
   /* =================== RESPONSIVE =================== */
@@ -1348,28 +1427,112 @@
   }
 
   @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    nav.scrolled { padding: 12px 24px; }
+    nav { padding: 16px 20px; }
+    nav.scrolled { padding: 12px 20px; }
     .nav-links { display: none; }
     .mobile-toggle { display: flex; }
-    .hero { min-height: 85vh; }
-    .hero-content { padding: 0 24px 60px; }
-    .hero h1 { font-size: 2.6rem; }
+    .mobile-menu { display: flex; }
+    .logo { font-size: 1.4rem; }
+    .logo-mark { width: 32px; height: 32px; }
+
+    .hero { min-height: auto; padding-top: 80px; }
+    .hero-content {
+      padding: 0 20px 48px;
+      gap: 32px;
+    }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 20px; }
+    .hero-overline { margin-bottom: 20px; font-size: 0.7rem; }
+    .hero-desc { font-size: 0.95rem; margin-bottom: 32px; }
+    .hero-ctas { gap: 12px; }
+    .hero-ctas .btn-cta,
+    .hero-ctas .btn-outline {
+      padding: 14px 24px;
+      font-size: 0.78rem;
+      min-height: 48px;
+    }
+    .hero-right { max-width: 100%; }
     .hero-stats { grid-template-columns: 1fr 1fr 1fr; }
-    .services, .why-section, .pricing, .testimonials, .cta-section { padding: 80px 24px; }
-    footer { padding: 48px 24px 32px; }
-    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-    .trusted-inner { flex-direction: column; gap: 24px; }
-    .trusted-logos { flex-wrap: wrap; justify-content: center; gap: 32px; }
+    .hero-stat { padding: 20px 12px; }
+    .hero-stat h3 { font-size: 1.6rem; }
+    .hero-stat p { font-size: 0.65rem; }
+
+    .trusted-bar { padding: 40px 20px; }
+    .trusted-inner { flex-direction: column; gap: 20px; }
+    .trusted-logos { flex-wrap: wrap; justify-content: center; gap: 20px 28px; }
+    .trusted-logos span { font-size: 1.1rem; }
+
+    .services, .why-section, .pricing, .testimonials, .cta-section {
+      padding: 64px 20px;
+    }
+    .services-header { margin-bottom: 48px; }
+    .services-header h2 { font-size: 2rem; }
+    .service-card { padding: 36px 24px; }
+    .service-card h3 { font-size: 1.3rem; }
+
+    .why-content h2 { font-size: 1.8rem; }
     .why-stats { grid-template-columns: 1fr 1fr; }
-    .quote-modal { padding: 36px 24px; }
+    .why-stat { padding: 32px 20px; }
+    .why-stat-num { font-size: 2.2rem; }
+
+    .pricing-header { margin-bottom: 48px; }
+    .pricing-header h2 { font-size: 2rem; }
+    .price-card { padding: 40px 24px; }
+    .price-card h3 { font-size: 1.5rem; }
+    .price-card .btn-cta,
+    .price-card .btn-outline {
+      min-height: 52px;
+      font-size: 0.8rem;
+    }
+
+    .testimonial-large { padding: 40px 24px; }
+    .testimonial-large .t-text { font-size: 1.25rem; }
+    .testimonial-large .t-quote { font-size: 3rem; margin-bottom: 16px; }
+    .testimonial-small { padding: 32px 24px; }
+
+    .cta-box {
+      padding: 48px 24px;
+    }
+    .cta-box h2 { font-size: 2rem; }
+    .cta-box p { font-size: 0.95rem; margin-bottom: 32px; }
+    .cta-box .btn-cta { min-height: 52px; }
+
+    footer { padding: 48px 20px 32px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .quote-modal { padding: 36px 20px; }
     .quote-type-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
+    .quote-submit { min-height: 52px; }
+    .quote-type-card { padding: 28px 20px; }
+
+    /* Ensure no horizontal overflow */
+    .section-label { font-size: 0.68rem; }
   }
 
   @media (max-width: 480px) {
-    .hero-stats { grid-template-columns: 1fr; }
-    .hero-stat { padding: 24px 20px; }
+    .hero h1 { font-size: 1.9rem; }
+    .hero-ctas { flex-direction: column; width: 100%; }
+    .hero-ctas .btn-cta,
+    .hero-ctas .btn-outline {
+      width: 100%;
+      justify-content: center;
+      min-height: 52px;
+    }
+    .hero-stats { grid-template-columns: 1fr 1fr 1fr; }
+    .hero-stat { padding: 16px 8px; }
+    .hero-stat h3 { font-size: 1.3rem; }
+    .hero-stat p { font-size: 0.6rem; letter-spacing: 0.06em; }
+    .why-stat-num { font-size: 1.8rem; }
+    .why-stat { padding: 24px 16px; }
+    .cta-box .btn-cta {
+      width: 100%;
+      justify-content: center;
+    }
   }
 </style>
 </head>
@@ -1431,10 +1594,20 @@
     <li><a href="mailto:cleannovasolutions@gmail.com" class="nav-email">cleannovasolutions@gmail.com</a></li>
     <li><a href="#book" class="btn-cta"><span>Book a Clean</span></a></li>
   </ul>
-  <button class="mobile-toggle" aria-label="Menu">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mobile-menu-link">Services</a>
+  <a href="#pricing" class="mobile-menu-link">Pricing</a>
+  <a href="#why" class="mobile-menu-link">Why Us</a>
+  <a href="#reviews" class="mobile-menu-link">Reviews</a>
+  <a href="mailto:cleannovasolutions@gmail.com" class="mobile-menu-email">cleannovasolutions@gmail.com</a>
+  <a href="#book" class="mobile-menu-cta mobile-menu-link">Book a Clean</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -2007,6 +2180,54 @@
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeQuote(); });
   document.getElementById('quoteClose').addEventListener('click', closeQuote);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeQuote(); });
+
+  // Mobile menu toggle
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function toggleMobileMenu() {
+    const isOpen = mobileMenu.classList.contains('open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileMenu.classList.add('open');
+      mobileToggle.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    mobileToggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  mobileToggle.addEventListener('click', toggleMobileMenu);
+
+  // Close mobile menu when a link is clicked
+  document.querySelectorAll('.mobile-menu-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      closeMobileMenu();
+      const href = this.getAttribute('href');
+      if (href === '#book') {
+        e.preventDefault();
+        const preselect = this.getAttribute('data-type');
+        if (preselect) {
+          openQuoteWithType(preselect);
+        } else {
+          openQuote();
+        }
+      } else if (href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      }
+    });
+  });
 </script>
 
 </body>

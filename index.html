@@ -37,11 +37,6 @@
     { "@type": "City", "name": "Arlington Heights", "containedInPlace": { "@type": "State", "name": "Illinois" } },
     { "@type": "City", "name": "Downers Grove", "containedInPlace": { "@type": "State", "name": "Illinois" } }
   ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "2400"
-  },
   "serviceType": ["Residential Cleaning", "Commercial Cleaning", "Deep Cleaning", "Move-Out Cleaning", "Window Cleaning"],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -56,26 +51,28 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #1A1714;
-    --charcoal: #2C2824;
-    --dark: #3A3530;
-    --graphite: #4A4540;
-    --ivory: #FAF7F2;
-    --ivory-dim: #F0EBE3;
-    --cream: #FDFCF9;
-    --warm-bg: #F5F1EB;
-    --gold: #B8935F;
-    --gold-light: #D4BA8A;
-    --gold-dim: rgba(184, 147, 95, 0.1);
-    --text-primary: #2C2824;
-    --text-secondary: #6B6560;
-    --text-muted: #9B9590;
-    --border: rgba(44, 40, 36, 0.1);
-    --border-light: rgba(44, 40, 36, 0.06);
-    --glass: rgba(250, 247, 242, 0.9);
+    --black: #061528;
+    --charcoal: #0A2240;
+    --dark: #0E3260;
+    --graphite: #1B4B80;
+    --ivory: #F0F4F8;
+    --ivory-dim: #E1E9F0;
+    --cream: #F7F9FC;
+    --warm-bg: #E8EFF6;
+    --gold: #F5A623;
+    --gold-light: #FFB94D;
+    --gold-dim: rgba(245, 166, 35, 0.12);
+    --text-primary: #0A2240;
+    --text-secondary: #3D6080;
+    --text-muted: #6A90B0;
+    --border: rgba(10, 61, 145, 0.12);
+    --border-light: rgba(10, 61, 145, 0.06);
+    --glass: rgba(240, 244, 248, 0.92);
+    --blue: #0A3D91;
+    --blue-light: #2196F3;
     --radius: 16px;
     --radius-sm: 10px;
     --radius-lg: 24px;
@@ -92,55 +89,37 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+  h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; }
 
   /* =================== NAV =================== */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 24px 48px;
+    padding: 12px 48px;
     display: flex; align-items: center; justify-content: space-between;
-    background: transparent;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 16px rgba(10, 34, 64, 0.06);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   nav.scrolled {
-    padding: 16px 48px;
-    background: rgba(250, 247, 242, 0.92);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    padding: 8px 48px;
+    box-shadow: 0 2px 20px rgba(10, 34, 64, 0.1);
   }
 
   .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem;
-    font-weight: 600;
-    color: white;
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center;
     text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: color 0.4s;
   }
 
-  nav.scrolled .logo { color: var(--charcoal); }
-
-  .logo-mark {
-    width: 38px; height: 38px;
-    border: 1.5px solid var(--gold-light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+  .logo-img {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
     transition: all 0.4s ease;
   }
 
-  nav.scrolled .logo-mark { border-color: var(--gold); }
-
-  .logo:hover .logo-mark {
-    background: var(--gold);
-    border-color: var(--gold);
-  }
-
-  .logo:hover .logo-mark svg { color: white; }
+  nav.scrolled .logo-img { height: 75px; }
 
   .nav-links {
     display: flex; align-items: center; gap: 40px;
@@ -149,28 +128,23 @@
 
   .nav-links a {
     text-decoration: none;
-    color: rgba(255,255,255,0.75);
+    color: var(--text-secondary);
     font-size: 0.85rem;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    transition: color 0.4s;
+    transition: color 0.3s;
   }
 
-  .nav-links a:hover { color: white; }
-
-  nav.scrolled .nav-links a { color: var(--text-secondary); }
-  nav.scrolled .nav-links a:hover { color: var(--charcoal); }
+  .nav-links a:hover { color: var(--charcoal); }
 
   .nav-email {
     font-weight: 500 !important;
-    color: var(--gold-light) !important;
+    color: var(--blue) !important;
     text-transform: none !important;
     letter-spacing: 0 !important;
     font-size: 0.88rem !important;
   }
-
-  nav.scrolled .nav-email { color: var(--gold) !important; }
 
   .btn-cta {
     display: inline-flex; align-items: center; gap: 10px;
@@ -220,14 +194,15 @@
   }
 
   .btn-outline:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+    border-color: var(--blue-light);
+    color: var(--blue-light);
   }
 
   /* =================== HERO =================== */
   .hero {
     position: relative;
     min-height: 100vh;
+    padding-top: 94px;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
@@ -242,8 +217,8 @@
     content: '';
     position: absolute; inset: 0;
     background:
-      linear-gradient(180deg, rgba(26,23,20,0.25) 0%, rgba(26,23,20,0.05) 30%, rgba(26,23,20,0.4) 65%, rgba(26,23,20,0.92) 100%),
-      linear-gradient(90deg, rgba(26,23,20,0.55) 0%, transparent 50%);
+      linear-gradient(180deg, rgba(6,21,40,0.3) 0%, rgba(6,21,40,0.05) 30%, rgba(6,21,40,0.45) 65%, rgba(6,21,40,0.94) 100%),
+      linear-gradient(90deg, rgba(10,61,145,0.4) 0%, transparent 50%);
   }
 
   .hero-content {
@@ -266,7 +241,7 @@
     font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--blue-light);
     margin-bottom: 32px;
     opacity: 0; transform: translateY(20px);
     animation: fadeUp 0.8s ease 0.3s forwards;
@@ -275,7 +250,7 @@
   .hero-overline::before {
     content: '';
     width: 40px; height: 1px;
-    background: var(--gold);
+    background: var(--blue-light);
   }
 
   .hero h1 {
@@ -325,7 +300,7 @@
   }
 
   .hero-stat {
-    background: rgba(250, 247, 242, 0.85);
+    background: rgba(240, 244, 248, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 32px 28px;
@@ -382,11 +357,13 @@
   }
 
   .trusted-logos span {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 1.4rem;
-    color: var(--ivory);
+    color: var(--charcoal);
     white-space: nowrap;
-    font-weight: 500;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   /* =================== SECTION COMMON =================== */
@@ -395,7 +372,7 @@
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--gold);
+    color: var(--blue);
     font-weight: 500;
     margin-bottom: 20px;
     font-family: 'Outfit', sans-serif;
@@ -404,7 +381,7 @@
   .section-label::before {
     content: '';
     width: 40px; height: 1px;
-    background: var(--gold);
+    background: var(--blue);
   }
 
   /* =================== SERVICES =================== */
@@ -458,7 +435,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     height: 2px;
-    background: var(--gold);
+    background: var(--blue);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -477,12 +454,12 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 28px;
     transition: all 0.4s ease;
-    color: var(--gold);
+    color: var(--blue);
   }
 
   .service-card:hover .service-icon {
-    border-color: var(--gold);
-    background: var(--gold-dim);
+    border-color: var(--blue);
+    background: rgba(10, 61, 145, 0.08);
   }
 
   .service-card h3 {
@@ -516,7 +493,7 @@
   }
 
   .service-card:hover .service-tag {
-    border-color: rgba(201, 169, 110, 0.3);
+    border-color: rgba(10, 61, 145, 0.25);
     color: var(--text-secondary);
   }
 
@@ -569,10 +546,10 @@
 
   .why-point-icon {
     width: 48px; height: 48px;
-    border: 1px solid rgba(201, 169, 110, 0.3);
+    border: 1px solid rgba(10, 61, 145, 0.25);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    color: var(--gold);
+    color: var(--blue);
   }
 
   .why-point h3 {
@@ -612,9 +589,9 @@
   }
 
   .why-stat-num {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 3rem;
-    color: var(--gold);
+    color: var(--blue);
     font-weight: 400;
     margin-bottom: 8px;
     line-height: 1;
@@ -688,16 +665,16 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue-light), var(--gold));
   }
 
   .popular-badge {
     display: inline-flex;
     padding: 6px 18px;
-    background: var(--gold-dim);
-    border: 1px solid rgba(201, 169, 110, 0.3);
-    color: var(--gold);
+    background: rgba(10, 61, 145, 0.08);
+    border: 1px solid rgba(10, 61, 145, 0.25);
+    color: var(--blue);
     font-size: 0.68rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -710,7 +687,7 @@
     text-transform: uppercase;
     letter-spacing: 0.15em;
     font-weight: 600;
-    color: var(--gold);
+    color: var(--blue);
     margin-bottom: 12px;
   }
 
@@ -723,9 +700,9 @@
 
   .price-card.featured h3 { color: var(--ivory); }
   .price-card.featured .price-type { color: var(--gold-light); }
-  .price-card.featured .price-subtitle { color: #A09B93; }
-  .price-card.featured .price-features li { color: #C4BFB6; }
-  .price-card.featured .price-divider { background: rgba(245, 240, 232, 0.1); }
+  .price-card.featured .price-subtitle { color: #8AABC8; }
+  .price-card.featured .price-features li { color: #9DBDD8; }
+  .price-card.featured .price-divider { background: rgba(240, 244, 248, 0.1); }
 
   .price-subtitle {
     font-size: 0.88rem;
@@ -759,10 +736,10 @@
     content: '';
     flex-shrink: 0;
     width: 20px; height: 20px;
-    border: 1px solid rgba(201, 169, 110, 0.4);
+    border: 1px solid rgba(10, 61, 145, 0.3);
     display: flex; align-items: center; justify-content: center;
     margin-top: 2px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23C9A96E' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%230A3D91' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: center;
   }
@@ -813,21 +790,21 @@
   }
 
   .testimonial-large .t-quote {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 4rem;
-    color: var(--gold);
+    color: var(--blue);
     line-height: 1;
     margin-bottom: 24px;
     opacity: 0.5;
   }
 
   .testimonial-large .t-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
     color: var(--charcoal);
-    line-height: 1.55;
+    line-height: 1.6;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 40px;
   }
 
@@ -839,11 +816,11 @@
 
   .t-avatar {
     width: 48px; height: 48px;
-    border: 1px solid var(--gold);
+    border: 1px solid var(--blue);
     display: flex; align-items: center; justify-content: center;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--gold);
+    color: var(--blue);
   }
 
   .t-name {
@@ -903,7 +880,7 @@
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 0.82rem;
     font-weight: 500;
-    color: var(--gold);
+    color: var(--blue);
     text-decoration: none;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -933,8 +910,8 @@
     content: '';
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse at 30% 50%, rgba(184, 147, 95, 0.08), transparent 60%),
-      radial-gradient(ellipse at 70% 50%, rgba(184, 147, 95, 0.06), transparent 60%);
+      radial-gradient(ellipse at 30% 50%, rgba(33, 150, 243, 0.1), transparent 60%),
+      radial-gradient(ellipse at 70% 50%, rgba(245, 166, 35, 0.08), transparent 60%);
   }
 
   .cta-box > * { position: relative; z-index: 1; }
@@ -993,8 +970,8 @@
   }
 
   .social-link:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+    border-color: var(--blue);
+    color: var(--blue);
   }
 
   .footer-col h4 {
@@ -1017,7 +994,7 @@
     font-weight: 300;
   }
 
-  .footer-col a:hover { color: var(--gold); }
+  .footer-col a:hover { color: var(--blue); }
 
   .footer-bottom {
     display: flex; justify-content: space-between; align-items: center;
@@ -1031,7 +1008,7 @@
   /* =================== QUOTE MODAL =================== */
   .quote-overlay {
     position: fixed; inset: 0; z-index: 200;
-    background: rgba(44, 40, 36, 0.6);
+    background: rgba(10, 34, 64, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     display: flex; align-items: center; justify-content: center;
@@ -1073,8 +1050,8 @@
   }
 
   .quote-close:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+    border-color: var(--blue);
+    color: var(--blue);
   }
 
   .quote-step-header { margin-bottom: 36px; }
@@ -1128,7 +1105,7 @@
   }
 
   .qtc-icon {
-    color: var(--gold);
+    color: var(--blue);
     margin-bottom: 16px;
   }
 
@@ -1146,14 +1123,14 @@
     text-transform: uppercase;
   }
 
-  .quote-back:hover { color: var(--gold); }
+  .quote-back:hover { color: var(--blue); }
 
   .quote-type-badge {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 6px 16px;
-    background: var(--gold-dim);
-    border: 1px solid rgba(201, 169, 110, 0.3);
-    color: var(--gold);
+    background: rgba(10, 61, 145, 0.08);
+    border: 1px solid rgba(10, 61, 145, 0.25);
+    color: var(--blue);
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -1201,8 +1178,8 @@
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.1);
   }
 
   .form-group input::placeholder,
@@ -1244,8 +1221,8 @@
 
   .success-icon {
     width: 72px; height: 72px;
-    border: 1px solid rgba(201, 169, 110, 0.4);
-    color: var(--gold);
+    border: 1px solid rgba(10, 61, 145, 0.3);
+    color: var(--blue);
     display: flex; align-items: center; justify-content: center;
     font-size: 2rem;
     margin: 0 auto 28px;
@@ -1320,11 +1297,9 @@
   .mobile-toggle span {
     display: block;
     width: 24px; height: 1.5px;
-    background: white;
+    background: var(--charcoal);
     transition: all 0.3s ease;
   }
-
-  nav.scrolled .mobile-toggle span { background: var(--charcoal); }
 
   /* Hamburger to X animation */
   .mobile-toggle.active span:nth-child(1) {
@@ -1345,7 +1320,7 @@
     position: fixed;
     inset: 0;
     z-index: 300;
-    background: rgba(26, 23, 20, 0.97);
+    background: rgba(6, 21, 40, 0.97);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1374,13 +1349,13 @@
   }
 
   .mobile-menu a:hover,
-  .mobile-menu a:active { color: var(--gold); }
+  .mobile-menu a:active { color: var(--blue-light); }
 
   .mobile-menu .mobile-menu-email {
     text-transform: none;
     letter-spacing: 0;
     font-size: 0.92rem;
-    color: var(--gold-light);
+    color: var(--blue-light);
     margin-top: 12px;
     padding: 14px 24px;
   }
@@ -1427,15 +1402,15 @@
   }
 
   @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    nav.scrolled { padding: 12px 20px; }
+    nav { padding: 10px 20px; }
+    nav.scrolled { padding: 6px 20px; }
     .nav-links { display: none; }
     .mobile-toggle { display: flex; }
     .mobile-menu { display: flex; }
     .logo { font-size: 1.4rem; }
-    .logo-mark { width: 32px; height: 32px; }
+    .logo-img { height: 75px; }
 
-    .hero { min-height: auto; padding-top: 80px; }
+    .hero { min-height: auto; padding-top: 90px; }
     .hero-content {
       padding: 0 20px 48px;
       gap: 32px;
@@ -1584,8 +1559,7 @@
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="logo">
-    <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--gold);"><use href="#icon-star"/></svg></div>
-    CleanNova
+    <img src="logo.png" alt="CleanNova Solutions" class="logo-img">
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -1625,16 +1599,16 @@
     <div class="hero-right">
       <div class="hero-stats">
         <div class="hero-stat">
-          <h3>2,400+</h3>
-          <p>Happy Clients</p>
+          <h3>100%</h3>
+          <p>Satisfaction Guaranteed</p>
         </div>
         <div class="hero-stat">
-          <h3>4.9</h3>
-          <p>Average Rating</p>
+          <h3>Eco</h3>
+          <p>Friendly Products</p>
         </div>
         <div class="hero-stat">
-          <h3>6 yrs</h3>
-          <p>In Business</p>
+          <h3>Free</h3>
+          <p>Quotes &amp; Estimates</p>
         </div>
       </div>
     </div>
@@ -1652,6 +1626,7 @@
       <span>Oak Park</span>
       <span>Arlington Heights</span>
       <span>Downers Grove</span>
+      <span>Glen Ellyn</span>
       <span>Orland Park</span>
     </div>
   </div>
@@ -1764,20 +1739,20 @@
       </div>
       <div class="why-stats reveal reveal-delay-2">
         <div class="why-stat">
-          <div class="why-stat-num">2,400+</div>
-          <div class="why-stat-label">Happy clients</div>
+          <div class="why-stat-num">100%</div>
+          <div class="why-stat-label">Satisfaction guaranteed</div>
         </div>
         <div class="why-stat">
-          <div class="why-stat-num">4.9 / 5</div>
-          <div class="why-stat-label">Average rating</div>
+          <div class="why-stat-num">Insured</div>
+          <div class="why-stat-label">Fully bonded team</div>
         </div>
         <div class="why-stat">
-          <div class="why-stat-num">98%</div>
-          <div class="why-stat-label">Rebook rate</div>
+          <div class="why-stat-num">Flexible</div>
+          <div class="why-stat-label">Scheduling options</div>
         </div>
         <div class="why-stat">
-          <div class="why-stat-num">24hr</div>
-          <div class="why-stat-label">Support response</div>
+          <div class="why-stat-num">2hr</div>
+          <div class="why-stat-label">Quote response</div>
         </div>
       </div>
     </div>
@@ -1853,13 +1828,13 @@
       <div class="testimonial-large">
         <div>
           <div class="t-quote">"</div>
-          <p class="t-text">The team was on time, super thorough, and left my Naperville townhome looking brand new. I've tried three other cleaning services before and this is the first one I'm actually keeping. Already booked my next one.</p>
+          <p class="t-text">CleanNova came in and deep cleaned our entire coffee shop — floors, counters, back of house, everything. The difference is night and day. Our customers have been commenting on how fresh the place looks. Couldn't recommend them more.</p>
         </div>
         <div class="t-author">
-          <div class="t-avatar">JM</div>
+          <div class="t-avatar">MW</div>
           <div>
-            <div class="t-name">Jessica M.</div>
-            <div class="t-detail">Naperville — bi-weekly clean</div>
+            <div class="t-name">MOTW Coffee Shop</div>
+            <div class="t-detail">Deep clean — Schaumburg</div>
           </div>
         </div>
       </div>
@@ -1867,26 +1842,26 @@
         <div class="testimonial-small">
           <div>
             <div class="t-stars"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg></div>
-            <p class="t-text">We switched our office cleaning to CleanNova three months ago and the difference is night and day. They work around our hours, the team is consistent, and our employees actually noticed.</p>
+            <p class="t-text">We needed a thorough clean before our grand opening and CleanNova delivered. The whole space was spotless from top to bottom. They were professional, fast, and the attention to detail was impressive.</p>
           </div>
           <div class="t-author">
-            <div class="t-avatar">DK</div>
+            <div class="t-avatar">BB</div>
             <div>
-              <div class="t-name">David K.</div>
-              <div class="t-detail">Office Manager — Schaumburg</div>
+              <div class="t-name">Bamboo Boba</div>
+              <div class="t-detail">Commercial clean — Glen Ellyn</div>
             </div>
           </div>
         </div>
         <div class="testimonial-small">
           <div>
             <div class="t-stars"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg></div>
-            <p class="t-text">Hired them for a move-out deep clean on my Evanston apartment and got my entire security deposit back. They cleaned things I didn't even know were dirty. Worth every penny.</p>
+            <p class="t-text">Our office hadn't had a proper deep clean in months and it was starting to show. CleanNova came in on a weekend and by Monday the whole team noticed. They even got the break room looking brand new.</p>
           </div>
           <div class="t-author">
-            <div class="t-avatar">AT</div>
+            <div class="t-avatar">RH</div>
             <div>
-              <div class="t-name">Alex T.</div>
-              <div class="t-detail">Move-out deep clean — Evanston</div>
+              <div class="t-name">Robert H.</div>
+              <div class="t-detail">Office Manager — Downers Grove</div>
             </div>
           </div>
         </div>
@@ -1903,7 +1878,7 @@
 <section class="cta-section" id="contact">
   <div class="cta-box reveal">
     <h2>Ready for a spotless space?</h2>
-    <p>Join hundreds of Chicago-area homeowners and businesses who trust CleanNova. No commitments, no contracts — just a cleaner, happier space.</p>
+    <p>Chicago-area homeowners and businesses trust CleanNova. No commitments, no contracts — just a cleaner, happier space.</p>
     <a href="#book" class="btn-cta"><span>Book Your First Clean</span></a>
   </div>
 </section>
@@ -1913,8 +1888,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#" class="logo">
-        <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--gold);"><use href="#icon-star"/></svg></div>
-        CleanNova
+        <img src="logo.png" alt="CleanNova Solutions" class="logo-img">
       </a>
       <p>Trusted cleaning services for homes and businesses across the Chicago suburbs. Proudly local.</p>
       <div class="social-links">

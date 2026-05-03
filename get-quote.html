@@ -29,12 +29,7 @@
   "provider": {
     "@type": "LocalBusiness",
     "name": "CleanNova",
-    "priceRange": "$120-$350",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "2400"
-    }
+    "priceRange": "$120-$350"
   },
   "areaServed": {
     "@type": "Place",
@@ -46,25 +41,27 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #1A1714;
-    --charcoal: #2C2824;
-    --dark: #3A3530;
-    --graphite: #4A4540;
-    --ivory: #FAF7F2;
-    --ivory-dim: #F0EBE3;
-    --cream: #FDFCF9;
-    --warm-bg: #F5F1EB;
-    --gold: #B8935F;
-    --gold-light: #D4BA8A;
-    --gold-dim: rgba(184, 147, 95, 0.1);
-    --text-primary: #2C2824;
-    --text-secondary: #6B6560;
-    --text-muted: #9B9590;
-    --border: rgba(44, 40, 36, 0.1);
-    --border-light: rgba(44, 40, 36, 0.06);
+    --black: #061528;
+    --charcoal: #0A2240;
+    --dark: #0E3260;
+    --graphite: #1B4B80;
+    --ivory: #F0F4F8;
+    --ivory-dim: #E1E9F0;
+    --cream: #F7F9FC;
+    --warm-bg: #E8EFF6;
+    --gold: #F5A623;
+    --gold-light: #FFB94D;
+    --gold-dim: rgba(245, 166, 35, 0.12);
+    --text-primary: #0A2240;
+    --text-secondary: #3D6080;
+    --text-muted: #6A90B0;
+    --border: rgba(10, 61, 145, 0.12);
+    --border-light: rgba(10, 61, 145, 0.06);
+    --blue: #0A3D91;
+    --blue-light: #2196F3;
     --radius: 16px;
     --radius-sm: 10px;
   }
@@ -81,40 +78,27 @@
     min-height: 100vh;
   }
 
-  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+  h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; }
 
   /* =================== NAV =================== */
   nav {
-    padding: 24px 48px;
+    padding: 12px 48px;
     display: flex; align-items: center; justify-content: space-between;
     border-bottom: 1px solid var(--border);
-    background: var(--ivory);
+    background: white;
+    box-shadow: 0 2px 16px rgba(10, 34, 64, 0.06);
   }
 
   .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.7rem;
-    font-weight: 600;
-    color: var(--charcoal);
-    display: flex; align-items: center; gap: 12px;
+    display: flex; align-items: center;
     text-decoration: none;
-    letter-spacing: 0.02em;
   }
 
-  .logo-mark {
-    width: 38px; height: 38px;
-    border: 1.5px solid var(--gold);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.4s ease;
+  .logo-img {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
   }
-
-  .logo:hover .logo-mark {
-    background: var(--gold);
-    border-color: var(--gold);
-  }
-
-  .logo:hover .logo-mark svg { color: white; }
 
   .nav-right {
     display: flex; align-items: center; gap: 32px;
@@ -130,13 +114,13 @@
     transition: color 0.3s;
   }
 
-  .nav-right a:hover { color: var(--gold); }
+  .nav-right a:hover { color: var(--blue); }
 
   .nav-email {
     text-transform: none !important;
     letter-spacing: 0 !important;
     font-size: 0.88rem !important;
-    color: var(--gold) !important;
+    color: var(--blue) !important;
     font-weight: 500 !important;
   }
 
@@ -168,7 +152,7 @@
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--gold);
+    color: var(--blue);
     font-weight: 500;
     margin-bottom: 20px;
     font-family: 'Outfit', sans-serif;
@@ -177,7 +161,7 @@
   .section-label::before {
     content: '';
     width: 40px; height: 1px;
-    background: var(--gold);
+    background: var(--blue);
   }
 
   .quote-info h1 {
@@ -215,10 +199,10 @@
 
   .trust-icon {
     width: 48px; height: 48px;
-    border: 1px solid rgba(201, 169, 110, 0.3);
+    border: 1px solid rgba(10, 61, 145, 0.25);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
-    color: var(--gold);
+    color: var(--blue);
   }
 
   .trust-point h3 {
@@ -248,13 +232,14 @@
     color: var(--gold);
   }
 
+
   .testimonial-card blockquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
     color: var(--charcoal);
-    line-height: 1.65;
+    line-height: 1.7;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 24px;
   }
 
@@ -266,11 +251,11 @@
 
   .testimonial-avatar {
     width: 44px; height: 44px;
-    border: 1px solid var(--gold);
+    border: 1px solid var(--blue);
     display: flex; align-items: center; justify-content: center;
     font-size: 0.82rem;
     font-weight: 600;
-    color: var(--gold);
+    color: var(--blue);
   }
 
   .testimonial-author-text strong {
@@ -303,8 +288,8 @@
   .quote-form-card::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--blue-light));
   }
 
   /* Step indicator */
@@ -322,7 +307,7 @@
     transition: all 0.3s;
   }
 
-  .step-dot.active { color: var(--gold); }
+  .step-dot.active { color: var(--blue); }
   .step-dot.completed { color: var(--text-secondary); }
 
   .step-num {
@@ -335,15 +320,15 @@
   }
 
   .step-dot.active .step-num {
-    background: var(--gold);
-    border-color: var(--gold);
+    background: var(--blue);
+    border-color: var(--blue);
     color: white;
   }
 
   .step-dot.completed .step-num {
-    background: var(--gold-dim);
-    border-color: rgba(201, 169, 110, 0.3);
-    color: var(--gold);
+    background: rgba(10, 61, 145, 0.08);
+    border-color: rgba(10, 61, 145, 0.25);
+    color: var(--blue);
   }
 
   .step-line {
@@ -353,7 +338,7 @@
     transition: background 0.3s;
   }
 
-  .step-line.active { background: var(--gold); }
+  .step-line.active { background: var(--blue); }
 
   /* Type selection */
   .type-selection {
@@ -386,12 +371,12 @@
     display: block;
     width: 100%;
     height: 2px;
-    background: var(--gold);
+    background: var(--blue);
     margin-top: 16px;
   }
 
   .type-card-icon {
-    color: var(--gold);
+    color: var(--blue);
     margin-bottom: 14px;
   }
 
@@ -409,7 +394,7 @@
     font-weight: 300;
   }
 
-  .type-card.selected h3 { color: var(--gold); }
+  .type-card.selected h3 { color: var(--blue); }
 
   /* Form fields */
   .form-step { display: none; }
@@ -462,8 +447,8 @@
   .field-group input:focus,
   .field-group select:focus,
   .field-group textarea:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(10, 61, 145, 0.1);
   }
 
   .field-group input::placeholder,
@@ -549,8 +534,8 @@
   }
 
   .btn-back:hover {
-    border-color: var(--gold);
-    color: var(--gold);
+    border-color: var(--blue);
+    color: var(--blue);
   }
 
   /* Success */
@@ -564,11 +549,11 @@
 
   .success-ring {
     width: 72px; height: 72px;
-    border: 1px solid rgba(201, 169, 110, 0.4);
+    border: 1px solid rgba(10, 61, 145, 0.3);
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 28px;
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
-    color: var(--gold);
+    color: var(--blue);
   }
 
   @keyframes popIn {
@@ -639,7 +624,7 @@
     position: fixed;
     inset: 0;
     z-index: 300;
-    background: rgba(26, 23, 20, 0.97);
+    background: rgba(6, 21, 40, 0.97);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -668,13 +653,13 @@
   }
 
   .mobile-menu a:hover,
-  .mobile-menu a:active { color: var(--gold); }
+  .mobile-menu a:active { color: var(--blue-light); }
 
   .mobile-menu .mobile-menu-email {
     text-transform: none;
     letter-spacing: 0;
     font-size: 0.92rem;
-    color: var(--gold-light);
+    color: var(--blue-light);
     margin-top: 12px;
     padding: 14px 24px;
   }
@@ -690,9 +675,8 @@
   }
 
   @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .logo { font-size: 1.4rem; }
-    .logo-mark { width: 32px; height: 32px; }
+    nav { padding: 10px 20px; }
+    .logo-img { height: 75px; }
     .nav-right { display: none; }
     .mobile-toggle { display: flex; }
     .mobile-menu { display: flex; }
@@ -758,8 +742,7 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="logo">
-    <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--gold);"><use href="#icon-star"/></svg></div>
-    CleanNova
+    <img src="logo.png" alt="CleanNova Solutions" class="logo-img">
   </a>
   <div class="nav-right">
     <a href="index.html">&larr; Back to Home</a>
@@ -817,12 +800,12 @@
 
     <div class="testimonial-card">
       <div class="t-stars"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg><svg width="14" height="14" viewBox="0 0 24 24"><use href="#icon-star-fill"/></svg></div>
-      <blockquote>"CleanNova transformed our Schaumburg office. The team is professional, thorough, and always on time. Best cleaning service we've used in Chicagoland."</blockquote>
+      <blockquote>"CleanNova deep cleaned our entire coffee shop and the difference is night and day. Our customers keep commenting on how fresh the place looks. Couldn't recommend them more."</blockquote>
       <div class="testimonial-author">
-        <div class="testimonial-avatar">MR</div>
+        <div class="testimonial-avatar">MW</div>
         <div class="testimonial-author-text">
-          <strong>Maria R.</strong>
-          <span>Office Manager — Schaumburg</span>
+          <strong>MOTW Coffee Shop</strong>
+          <span>Deep clean — Schaumburg</span>
         </div>
       </div>
     </div>
